@@ -10,5 +10,9 @@ language: objective-c
 # - gem install cocoapods # Since Travis is not always on latest version
 # - pod install --project-directory=Example
 script:
+<<<<<<< HEAD
 - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/NpageLibrary.xcworkspace -scheme NpageLibrary-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+=======
+- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/NpageLibary.xcworkspace -scheme NpageLibary-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
+>>>>>>> b6b987f7bbd7525068a49c41f8ee92ca6e7f8ed9
 - pod lib lint

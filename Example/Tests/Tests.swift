@@ -2,7 +2,11 @@
 
 import Quick
 import Nimble
+<<<<<<< HEAD
 import NpageLibrary
+=======
+import NpageLibary
+>>>>>>> b6b987f7bbd7525068a49c41f8ee92ca6e7f8ed9
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
