@@ -1,0 +1,22 @@
+{
+  "name": "NpageLibrary",
+  "version": "0.1.0",
+  "summary": "A short description of NpageLibrary.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/ho/NpageLibrary",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "ho": "ho@npage.co.kr"
+  },
+  "source": {
+    "git": "https://github.com/ho/NpageLibrary.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "NpageLibrary/Classes/**/*"
+}

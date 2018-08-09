@@ -1,0 +1,6 @@
+framework module NpageLibrary {
+  umbrella header "NpageLibrary-umbrella.h"
+
+  export *
+  module * { export * }
+}
