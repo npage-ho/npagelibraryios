@@ -8,13 +8,15 @@
 import UIKit
 
 open class NPBaseCV: UICollectionView {
-    var arrayAllData: [[String : AnyObject]]?
     var refreshBlock: ((Int) -> Void)?
     var moreBlock: ((Int) -> Void)?
+    var didSelectBlock: ((NSInteger, [String : AnyObject]?) -> Void)?
+    
+    var arrayAllData: [[String : AnyObject]]?
     var refreshControlCustom: UIRefreshControl?
     var pageNo = 0
     var pageSize = 20
-    
+
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         pageNo = 1
@@ -26,6 +28,10 @@ open class NPBaseCV: UICollectionView {
     
     public func setPageSize(_ ps: NSInteger) {
         pageSize = ps
+    }
+    
+    public func didSelectItem(_didSelectBlock:@escaping (_ index: NSInteger, _ item: [String:AnyObject]?) -> Void) {
+        didSelectBlock = _didSelectBlock
     }
     
     public func setRefreshList(_ refreshBlock: @escaping (_ pageNo: Int) -> Void) {
@@ -62,12 +68,18 @@ open class NPBaseCV: UICollectionView {
             refreshControlCustom?.beginRefreshing()
         }
         pageNo = 1
-        refreshBlock!(pageNo)
+        if let refresh = refreshBlock as ((Int) -> Void)? {
+            refresh(pageNo)
+        }
     }
 }
 
 extension NPBaseCV : UICollectionViewDelegate {
-    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let didSelectItem = didSelectBlock as ((NSInteger, [String : AnyObject]?) -> Void)? {
+            didSelectItem(indexPath.row, arrayAllData?[indexPath.row])
+        }
+    }
 }
 
 extension NPBaseCV : UICollectionViewDataSource {
@@ -85,7 +97,6 @@ extension NPBaseCV : UICollectionViewDataSource {
 
 extension NPBaseCV : UICollectionViewDataSourcePrefetching {
     public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        
     }
 }
 
@@ -100,7 +111,9 @@ extension NPBaseCV : UIScrollViewDelegate {
         if (scrollView.contentOffset.y + scrollView.frame.size.height) >= scrollView.contentSize.height {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(0.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {
                 self.pageNo += 1
-                self.moreBlock!(self.pageNo)
+                if let more = self.moreBlock as ((Int) -> Void)? {
+                    more(self.pageNo)
+                }
             })
         }
     }
