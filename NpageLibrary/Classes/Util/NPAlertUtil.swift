@@ -41,7 +41,7 @@ extension UIAlertController {
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController, let presenting = navigationController.topViewController {
                 presenting.present(alert, animated: true, completion: nil)
             } else {
-                print("can't find rootView!!")
+                print("NPAlert can't find rootView!!")
             }
         }
     }

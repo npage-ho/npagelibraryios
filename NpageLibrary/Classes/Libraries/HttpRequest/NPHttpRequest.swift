@@ -40,7 +40,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     }
     
     public func post(_target: UIViewController!, _urlString: String, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void) {
-        post(_target: target, _urlString: _urlString, _header: nil, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
+        post(_target: _target, _urlString: _urlString, _header: nil, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
     }
     
     public func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void) {

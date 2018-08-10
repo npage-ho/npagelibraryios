@@ -8,18 +8,19 @@
 /*
  Usage
  
- let imageZoomVC = ImageZoomVC(nibName: "ImageZoomVC", bundle: nil)
- imageZoomVC.arrayImages = ["https://raw.githubusercontent.com/onevcat/Kingfisher/master/images/kingfisher-1.jpg", "https://raw.githubusercontent.com/onevcat/Kingfisher/master/images/kingfisher-2.jpg", "https://raw.githubusercontent.com/onevcat/Kingfisher/master/images/kingfisher-3.jpg"]
- self.present(imageZoomVC, animated: true, completion: nil)
+ let controller = NPImageZoomVC(nibName: String(describing: NPImageZoomVC.self), bundle: Bundle(for: NPImageZoomVC.self))
+ controller.arrayImages = ["https://raw.githubusercontent.com/onevcat/Kingfisher/master/images/kingfisher-1.jpg", "https://raw.githubusercontent.com/onevcat/Kingfisher/master/images/kingfisher-2.jpg", "https://raw.githubusercontent.com/onevcat/Kingfisher/master/images/kingfisher-3.jpg"]
+ self.present(controller, animated: true, completion: nil)
+ 
  */
 
 import UIKit
 import Kingfisher
 
 public class NPImageZoomVC: UIViewController {
-    var arrayImages: Array<String>!
-    var arrayTitles: Array<String>?
-    var selectImageIndex: Int = 0
+    public var arrayImages: Array<String>!
+    public var arrayTitles: Array<String>?
+    public var selectImageIndex: Int = 0
     var rectStandard: CGRect!
     
     @IBOutlet weak var _scrollView: UIScrollView!
