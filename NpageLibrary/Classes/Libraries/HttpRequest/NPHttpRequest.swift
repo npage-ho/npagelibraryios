@@ -35,7 +35,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     var receiveData : NSMutableData?
     var defaultSession : URLSession?
     
-    override init() {
+    public override init() {
         super.init()
     }
     
