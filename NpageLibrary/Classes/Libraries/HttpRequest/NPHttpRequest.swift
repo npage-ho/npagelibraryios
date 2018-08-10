@@ -37,7 +37,10 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     var urlString: String!
     var headerObject: [String: String]?
     var bodyObject: [String: String]?
-    var successBlock: ((NPHttpRequest, [String : Any]) -> Void)?
+    var successKey: String!
+    var successCode: String!
+    
+    var successBlock: (([String : Any]) -> Void)?
     var failBlock: ((Int) -> Void)?
     
     var receiveData : NSMutableData?
@@ -47,17 +50,21 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         super.init()
     }
     
-    public func post(_target: UIViewController!, _urlString: String, _bodyObject: [String: String]?, _successBlock: @escaping (_ httpRequest: NPHttpRequest, _ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void) {
+    public func post(_target: UIViewController!, _urlString: String, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void, _ _successKey: String = "code", _ _successCode: String = "200") {
         post(_target: _target, _urlString: _urlString, _header: nil, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
     }
     
-    public func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ httpRequest: NPHttpRequest, _ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void) {
+    public func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void, _ _successKey: String = "code", _ _successCode: String = "200") {
         target = _target
         urlString = _urlString
         headerObject = _header
         bodyObject = _bodyObject
+        
         successBlock = _successBlock
         failBlock = _failBlock
+        
+        successKey = _successKey
+        successCode = _successCode
         
         NPLoadingIndicator.shared.addIndicatorView(target: target)
         
@@ -126,7 +133,15 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
                 let jsonDic = try NPUtil.urlDecodeDictionary(JSONSerialization.jsonObject(with: anEncoding, options: [.allowFragments, .mutableContainers]) as? [String: Any])
                 print("jsonDic : \(String(describing: jsonDic))")
                 
-                successBlock!(self, jsonDic!)
+                successBlock!(jsonDic!)
+                
+                if let statusCode = jsonDic![successKey] as? String {
+                    if statusCode == successCode {
+                        successBlock!(jsonDic!)
+                    } else {
+                        showFailAlert(code: Int(statusCode))
+                    }
+                }
                 
             } catch let error as NSError {
                 print(error)
@@ -140,14 +155,14 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         var actions: [UIAlertAction]! = []
         actions.append(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         actions.append(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (action) in
-            self?.post(_target: self?.target, _urlString: (self?.urlString)!, _bodyObject: self?.bodyObject, _successBlock: self?.successBlock as! (NPHttpRequest, [AnyHashable : Any]?) -> Void, _failBlock: self?.failBlock as! ((Int)?) -> Void)
+            self?.post(_target: self?.target, _urlString: (self?.urlString)!, _bodyObject: self?.bodyObject, _successBlock: self?.successBlock as! ([AnyHashable : Any]?) -> Void, _failBlock: self?.failBlock as! ((Int)?) -> Void)
         }))
         
         NPAlertUtil.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
     }
     
-    public func showFailAlert(code: Int!) {
-        if code == NPEnums.CODE.SERVER_ERROR.rawValue {
+    func showFailAlert(code: Int!) {
+        if code == 500 {
             NPAlertUtil.showAlert(title: "Network Error", message: "A server error has occurred. Please contact the manager\nCode : \(String(code!))")
         } else {
             failBlock!(code!)
