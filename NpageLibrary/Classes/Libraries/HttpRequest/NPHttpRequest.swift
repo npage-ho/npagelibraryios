@@ -116,7 +116,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
             //            print("jsonString : \(str)")
             connectionDidFinish(str)
         } else {
-            fail(code: nil, error: error)
+            showFailAlert(error: error)
         }
     }
     
@@ -134,24 +134,23 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         }
     }
     
-    func fail(code: Int?, error: Error?) {
-        if code != nil {
-            if code == NPEnums.CODE.SERVER_ERROR.rawValue {
-                NPAlertUtil.showAlert(title: "Network Error", message: "A server error has occurred. Please contact the manager\nCode : \(String(code!))")
-            } else {
-                failBlock!(code!)
-            }
+    func showFailAlert(error: Error?) {
+        let errorMessage: String = (error?.localizedDescription)!
+        print("error : \(String(describing: error ?? nil))")
+        var actions: [UIAlertAction]! = []
+        actions.append(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actions.append(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (action) in
+            self?.post(_target: self?.target, _urlString: (self?.urlString)!, _bodyObject: self?.bodyObject, _successBlock: self?.successBlock as! (NPHttpRequest, [AnyHashable : Any]?) -> Void, _failBlock: self?.failBlock as! ((Int)?) -> Void)
+        }))
+        
+        NPAlertUtil.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
+    }
+    
+    public func showFailAlert(code: Int!) {
+        if code == NPEnums.CODE.SERVER_ERROR.rawValue {
+            NPAlertUtil.showAlert(title: "Network Error", message: "A server error has occurred. Please contact the manager\nCode : \(String(code!))")
         } else {
-            let errorMessage: String = (error?.localizedDescription)!
-            print("error : \(String(describing: error ?? nil))")
-            var actions: [UIAlertAction]! = []
-            actions.append(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            actions.append(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (action) in
-                self?.post(_target: self?.target, _urlString: (self?.urlString)!, _bodyObject: self?.bodyObject, _successBlock: self?.successBlock as! (NPHttpRequest, [AnyHashable : Any]?) -> Void, _failBlock: self?.failBlock as! ((Int)?) -> Void)
-            }))
-            
-            NPAlertUtil.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
-            
+            failBlock!(code!)
         }
     }
 }
