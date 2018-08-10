@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class NPBaseCV: UICollectionView {
+open class NPBaseCV: UICollectionView {
     var arrayAllData: [[String : AnyObject]]?
     var refreshBlock: ((Int) -> Void)?
     var moreBlock: ((Int) -> Void)?
@@ -45,7 +45,7 @@ public class NPBaseCV: UICollectionView {
         self.moreBlock = moreBlock
     }
     
-    override public func reloadData() {
+    override open func reloadData() {
         super.reloadData()
         if refreshControlCustom != nil && ((refreshControlCustom?.isRefreshing)! || !(refreshControlCustom?.isHidden ?? false)) {
             refreshControlCustom?.isHidden = true

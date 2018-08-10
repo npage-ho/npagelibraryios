@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class NPBaseTV: UITableView {
+open class NPBaseTV: UITableView {
     var arrayAllData: [[String : AnyObject]]?
     var refreshBlock: ((Int) -> Void)?
     var moreBlock: ((Int) -> Void)?
@@ -41,7 +41,7 @@ public class NPBaseTV: UITableView {
         self.moreBlock = moreBlock
     }
     
-    override public func reloadData() {
+    override open func reloadData() {
         super.reloadData()
         if refreshControlCustom != nil && ((refreshControlCustom?.isRefreshing)! || !(refreshControlCustom?.isHidden ?? false)) {
             refreshControlCustom?.isHidden = true
