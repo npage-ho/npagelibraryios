@@ -7,6 +7,6 @@
 
 import UIKit
 
-class NPUrls: NSObject {
-    static let URL_EXAMPLE = "https://npage.co.kr"
+public class NPUrls: NSObject {
+    public static let URL_EXAMPLE = "https://npage.co.kr"
 }

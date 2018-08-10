@@ -16,7 +16,7 @@
 import UIKit
 import Kingfisher
 
-class NPImageZoomVC: UIViewController {
+public class NPImageZoomVC: UIViewController {
     var arrayImages: Array<String>!
     var arrayTitles: Array<String>?
     var selectImageIndex: Int = 0
@@ -26,7 +26,7 @@ class NPImageZoomVC: UIViewController {
     @IBOutlet weak var labelCurrentPage: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
         _scrollView.delegate = self
@@ -98,14 +98,14 @@ class NPImageZoomVC: UIViewController {
         scrollView?.zoom(to: zoomRect, animated: animated)
     }
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
 
 extension NPImageZoomVC: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         if scrollView.subviews.count > 0 {
             return scrollView.subviews[0]
         } else {
@@ -113,7 +113,7 @@ extension NPImageZoomVC: UIScrollViewDelegate {
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var page: Int = Int(floor((scrollView.contentOffset.x - rectStandard.size.width / 2) / rectStandard.size.width) + 1)
         if page < 0 {
             page = 0

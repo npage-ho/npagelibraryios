@@ -17,10 +17,10 @@
  
  3. override image picker delegate
  @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
- imageView.image = GalleryUtil.getImage(info: info)
- let fileName: String = GalleryUtil.getFileName(info: info)
- print(fileName)
- picker.dismiss(animated: true, completion: nil)
+     imageView.image = GalleryUtil.getImage(info: info)
+     let fileName: String = GalleryUtil.getFileName(info: info)
+     print(fileName)
+     picker.dismiss(animated: true, completion: nil)
  }
  
  */
@@ -32,7 +32,7 @@ public class NPGallery: NSObject {
     var _tag: Int?
     var _target: UIViewController?
     
-    static func getFileName(info: [String : Any]) -> String! {
+    public static func getFileName(info: [String : Any]) -> String! {
         if #available(iOS 11.0, *) {
             if let asset = info[UIImagePickerControllerPHAsset] as? PHAsset {
                 if let fileName = (asset.value(forKey: "filename")) as? String {
@@ -45,7 +45,7 @@ public class NPGallery: NSObject {
         return ""
     }
     
-    static func getImage(info: [String : Any]) -> UIImage? {
+    public static func getImage(info: [String : Any]) -> UIImage? {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             return pickedImage
         }
@@ -76,7 +76,7 @@ public class NPGallery: NSObject {
         }
     }
     
-    func showPhotoWithDelegate(target: UIViewController, tag: Int = 0) {
+    public func showPhotoWithDelegate(target: UIViewController, tag: Int = 0) {
         checkPermission()
         
         _target = target

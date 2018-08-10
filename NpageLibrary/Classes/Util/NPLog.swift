@@ -19,8 +19,8 @@ enum LogEvent: String {
 public class NPLog {
     static var isLoggingEnabled = true
     
-    static func setLoggin(enable: Bool) {
-        isLoggingEnabled = enable
+    public static func setLoggin(enable: Bool) {
+        NPLog.isLoggingEnabled = enable
     }
 
     static var dateFormat = "yyyy-MM-dd hh:mm:ssSSS" // Use your own
@@ -32,27 +32,27 @@ public class NPLog {
         return formatter
     }
     
-    class func e( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
+    public class func e( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         printLog(event: LogEvent.e, object, filename: filename, line: line, column: column, funcName: funcName)
     }
     
-    class func i( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
+    public class func i( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         printLog(event: LogEvent.i, object, filename: filename, line: line, column: column, funcName: funcName)
     }
     
-    class func d( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
+    public class func d( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         printLog(event: LogEvent.d, object, filename: filename, line: line, column: column, funcName: funcName)
     }
     
-    class func v( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
+    public class func v( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         printLog(event: LogEvent.v, object, filename: filename, line: line, column: column, funcName: funcName)
     }
     
-    class func w( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
+    public class func w( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         printLog(event: LogEvent.w, object, filename: filename, line: line, column: column, funcName: funcName)
     }
     
-    class func s( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
+    public class func s( _ object: Any, filename: String = #file, line: Int = #line, column: Int = #column, funcName: String = #function) {
         printLog(event: LogEvent.s, object, filename: filename, line: line, column: column, funcName: funcName)
     }
     

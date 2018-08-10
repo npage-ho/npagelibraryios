@@ -7,8 +7,8 @@
 
 import UIKit
 
-class NPEnums: NSObject {
-    enum CODE: Int {
+public class NPEnums: NSObject {
+    public enum CODE: Int {
         case SUCCESS = 200
         case SERVER_ERROR = 500
     }

@@ -8,18 +8,18 @@
 import UIKit
 
 public class NPUtil: NSObject {
-    class func isNull(_ string: String?) -> Bool {
+    public class func isNull(_ string: String?) -> Bool {
         guard string != nil || !string!.isEmpty || string!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count != 0 else {
             return false
         }
         return true
     }
     
-    class func urlDecode(_ string: String?) -> String? {
+    public class func urlDecode(_ string: String?) -> String? {
         return string?.removingPercentEncoding?.replacingOccurrences(of: "+", with: " ")
     }
     
-    class func urlDecodeDictionary(_ jsonDic: [String: Any]!) -> [String : Any]? {
+    public class func urlDecodeDictionary(_ jsonDic: [String: Any]!) -> [String : Any]? {
         var dictionary: [String : Any] = [:]
         for key: String in jsonDic.keys {
             if ((jsonDic[key] as? [String: Any]) != nil) {
@@ -35,7 +35,7 @@ public class NPUtil: NSObject {
         return dictionary
     }
     
-    class func urlDecodeArray(_ array: [Any]!) -> [Any]? {
+    public class func urlDecodeArray(_ array: [Any]!) -> [Any]? {
         var mutableArray: [AnyHashable] = []
         for i in 0..<(array?.count ?? 0) {
             if (array?[i] is [AnyHashable : Any]) {
@@ -53,7 +53,7 @@ public class NPUtil: NSObject {
         return mutableArray
     }
     
-    class func getStringFromDic(dic:[String:String], key:String!) -> String! {
+    public class func getStringFromDic(dic:[String:String], key:String!) -> String! {
         if dic[key] != nil {
             return dic[key]
         }

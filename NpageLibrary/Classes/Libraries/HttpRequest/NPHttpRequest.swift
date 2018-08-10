@@ -24,7 +24,7 @@ import UIKit
 
 let TIME_OUT_INTERVAL: Double = 30
 
-class NPHttpRequest: NSObject, URLSessionDataDelegate {
+public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     var target: UIViewController!
     var urlString: String!
     var headerObject: [String: String]?
@@ -39,11 +39,11 @@ class NPHttpRequest: NSObject, URLSessionDataDelegate {
         super.init()
     }
     
-    func post(_target: UIViewController!, _urlString: String, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void) {
+    public func post(_target: UIViewController!, _urlString: String, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void) {
         post(_target: target, _urlString: _urlString, _header: nil, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
     }
     
-    func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void) {
+    public func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void) {
         target = _target
         urlString = _urlString
         headerObject = _header
@@ -86,11 +86,11 @@ class NPHttpRequest: NSObject, URLSessionDataDelegate {
         dataTask?.resume()
     }
     
-    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
         receiveData?.append(data)
     }
     
-    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
+    public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse, completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
         defaultSession?.finishTasksAndInvalidate()
         
         receiveData = nil
@@ -100,7 +100,7 @@ class NPHttpRequest: NSObject, URLSessionDataDelegate {
         completionHandler(.allow)
     }
     
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         NPLoadingIndicator.shared.hideWithKey(key: urlString)
         
         if error == nil {
@@ -135,7 +135,7 @@ class NPHttpRequest: NSObject, URLSessionDataDelegate {
     func fail(code: Int?, error: Error?) {
         if code != nil {
             if code == NPEnums.CODE.SERVER_ERROR.rawValue {
-                UIAlertController.showAlert("Network Error", "A server error has occurred. Please contact the manager\nCode : \(String(code!))")
+                NPAlertUtil.showAlert(title: "Network Error", message: "A server error has occurred. Please contact the manager\nCode : \(String(code!))")
             } else {
                 failBlock!(code!)
             }
@@ -148,30 +148,8 @@ class NPHttpRequest: NSObject, URLSessionDataDelegate {
                 self?.post(_target: self?.target, _urlString: (self?.urlString)!, _bodyObject: self?.bodyObject, _successBlock: self?.successBlock as! ([AnyHashable : Any]?) -> Void, _failBlock: self?.failBlock as! ((Int)?) -> Void)
             }))
             
-            UIAlertController.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
+            NPAlertUtil.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
             
-        }
-    }
-}
-
-extension UIAlertController {
-    static func showAlert(_ title: String, _ message: String) {
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "OK", style: .cancel, handler: nil)])
-    }
-    
-    static func showMessage(_ message: String) {
-        showAlert(title: "", message: message, actions: [UIAlertAction(title: "OK", style: .cancel, handler: nil)])
-    }
-    
-    static func showAlert(title: String?, message: String?, actions: [UIAlertAction]) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            for action in actions {
-                alert.addAction(action)
-            }
-            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController, let presenting = navigationController.topViewController {
-                presenting.present(alert, animated: true, completion: nil)
-            }
         }
     }
 }

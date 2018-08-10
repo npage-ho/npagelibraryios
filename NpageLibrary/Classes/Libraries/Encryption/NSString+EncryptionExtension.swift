@@ -21,14 +21,14 @@
 import UIKit
 
 extension String {
-    func encryp(_ key: String = AES256_SECRET_KEY) -> String? {
+    public func encrypAes256(_ key: String = AES256_SECRET_KEY) -> String? {
         if let data = self.data(using: .utf8), let encryptedData = NSData(data: data).aes256Encrypt(withKey: key) {
             return encryptedData.base64EncodedString()
         }
         return nil
     }
     
-    func decryp(_ key:String = AES256_SECRET_KEY) -> String? {
+    public func decrypAes256(_ key:String = AES256_SECRET_KEY) -> String? {
         if let data = NSData(base64Encoded: self, options: []), let decrypedData = data.aes256Decrypt(withKey: key) {
             return String(data: decrypedData, encoding: .utf8)
         }

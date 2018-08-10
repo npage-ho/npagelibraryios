@@ -7,6 +7,6 @@
 
 import UIKit
 
-class NPConstants: NSObject {
-    static let APP_NAME = "테스트"
+public class NPConstants: NSObject {
+    public static let APP_NAME = "테스트"
 }
