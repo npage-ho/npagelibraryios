@@ -1,16 +1,9 @@
 use_frameworks!
 
-<<<<<<< HEAD
 target 'NpageLibrary_Example' do
   pod 'NpageLibrary', :path => '../'
 
   target 'NpageLibrary_Tests' do
-=======
-target 'NpageLibary_Example' do
-  pod 'NpageLibary', :path => '../'
-
-  target 'NpageLibary_Tests' do
->>>>>>> b6b987f7bbd7525068a49c41f8ee92ca6e7f8ed9
     inherit! :search_paths
 
     pod 'Quick', '~> 1.2.0'

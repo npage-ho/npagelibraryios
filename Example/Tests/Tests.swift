@@ -2,26 +2,21 @@
 
 import Quick
 import Nimble
-<<<<<<< HEAD
-import NpageLibrary
-=======
-import NpageLibary
->>>>>>> b6b987f7bbd7525068a49c41f8ee92ca6e7f8ed9
 
 class TableOfContentsSpec: QuickSpec {
     override func spec() {
         describe("these will fail") {
 
             it("can do maths") {
-                expect(1) == 2
+                expect(1) == 1
             }
 
             it("can read") {
-                expect("number") == "string"
+                expect("number") == "number"
             }
 
             it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
+                expect("time").toEventually( equal("time") )
             }
             
             context("these will pass") {

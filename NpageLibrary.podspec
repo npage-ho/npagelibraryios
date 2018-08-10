@@ -31,7 +31,7 @@ All Thanks!
   s.source           = { :git => 'http://git.npage.co.kr:8888/ho/npagelibraryios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'NpageLibrary/Classes/**/*'
   
@@ -42,4 +42,6 @@ All Thanks!
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  s.dependency 'Kingfisher', '~> 4.0'
+  
 end
