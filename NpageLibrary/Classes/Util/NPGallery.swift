@@ -28,7 +28,7 @@
 import UIKit
 import Photos
 
-class NPGallery: NSObject {
+public class NPGallery: NSObject {
     var _tag: Int?
     var _target: UIViewController?
     

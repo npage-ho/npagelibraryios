@@ -16,7 +16,7 @@ enum LogEvent: String {
     case s = "[🔥]" // severe
 }
 
-class NPLog {
+public class NPLog {
     static var isLoggingEnabled = true
     
     static func setLoggin(enable: Bool) {

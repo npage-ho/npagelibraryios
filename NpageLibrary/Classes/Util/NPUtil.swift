@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NPUtil: NSObject {
+public class NPUtil: NSObject {
     class func isNull(_ string: String?) -> Bool {
         guard string != nil || !string!.isEmpty || string!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count != 0 else {
             return false
