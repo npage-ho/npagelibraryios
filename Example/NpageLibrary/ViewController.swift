@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         
+//        collectionView.array
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,4 +25,3 @@ class ViewController: UIViewController {
     }
 
 }
-

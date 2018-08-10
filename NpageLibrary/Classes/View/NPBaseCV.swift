@@ -12,7 +12,7 @@ open class NPBaseCV: UICollectionView {
     var moreBlock: ((Int) -> Void)?
     var didSelectBlock: ((NSInteger, [String : AnyObject]?) -> Void)?
     
-    var arrayAllData: [[String : AnyObject]]?
+    public var arrayAllData: [[String : AnyObject]]?
     var refreshControlCustom: UIRefreshControl?
     var pageNo = 0
     var pageSize = 20
@@ -75,7 +75,7 @@ open class NPBaseCV: UICollectionView {
 }
 
 extension NPBaseCV : UICollectionViewDelegate {
-    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let didSelectItem = didSelectBlock as ((NSInteger, [String : AnyObject]?) -> Void)? {
             didSelectItem(indexPath.row, arrayAllData?[indexPath.row])
         }
@@ -83,20 +83,21 @@ extension NPBaseCV : UICollectionViewDelegate {
 }
 
 extension NPBaseCV : UICollectionViewDataSource {
-    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard arrayAllData != nil else {
             return 0
         }
         return arrayAllData!.count;
     }
     
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell()
     }
 }
 
 extension NPBaseCV : UICollectionViewDataSourcePrefetching {
-    public func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    open func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        
     }
 }
 

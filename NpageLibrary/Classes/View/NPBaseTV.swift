@@ -12,7 +12,7 @@ open class NPBaseTV: UITableView {
     var moreBlock: ((Int) -> Void)?
     var didSelectBlock: ((NSInteger, [String : AnyObject]?) -> Void)?
     
-    var arrayAllData: [[String : AnyObject]]?
+    public var arrayAllData: [[String : AnyObject]]?
     var refreshControlCustom: UIRefreshControl?
     var pageNo = 0
     var pageSize = 20
@@ -71,7 +71,7 @@ open class NPBaseTV: UITableView {
 }
 
 extension NPBaseTV : UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, didSelectItemAt indexPath: IndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let didSelectItem = didSelectBlock as ((NSInteger, [String : AnyObject]?) -> Void)? {
             didSelectItem(indexPath.row, arrayAllData?[indexPath.row])
         }
@@ -79,14 +79,14 @@ extension NPBaseTV : UITableViewDelegate {
 }
 
 extension NPBaseTV : UITableViewDataSource {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard arrayAllData != nil else {
             return 0
         }
         return arrayAllData!.count;
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
 }
