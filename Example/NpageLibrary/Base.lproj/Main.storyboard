@@ -39,9 +39,7 @@
                                 <state key="normal" title="Button"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="APP_NAME"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="currentLanguage">
-                                        <integer key="value" value="0"/>
-                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="currentLanguage" value="kor"/>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>

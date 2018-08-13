@@ -7,9 +7,9 @@
 
 import UIKit
 
-enum kLanguage : Int {
-    case English
-    case Korean
+enum kLanguage : String {
+    case English = "eng"
+    case Korean = "kor"
 }
 
 class LocalizationUtil: NSObject {
@@ -39,7 +39,7 @@ public class LocalizationButton: UIButton {
     var localZationUtil: LocalizationUtil = LocalizationUtil()
     
     @IBInspectable var localizedText: String?
-    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
+    @IBInspectable var currentLanguage: String = kLanguage.English.rawValue {
         didSet {
             localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
             setLocalizedText()
@@ -62,7 +62,7 @@ public class LocalizationLabel: UILabel {
     var localZationUtil: LocalizationUtil = LocalizationUtil()
     
     @IBInspectable var localizedText: String?
-    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
+    @IBInspectable var currentLanguage: String = kLanguage.English.rawValue {
         didSet {
             localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
             setLocalizedText()
@@ -86,7 +86,7 @@ public class LocalizationTextField: UITextField {
     
     @IBInspectable var localizedText: String?
     @IBInspectable var localizedPlaceholder: String?
-    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
+    @IBInspectable var currentLanguage: String = kLanguage.English.rawValue {
         didSet {
             localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
             setLocalizedText()
@@ -116,7 +116,7 @@ public class LocalizationTextView: UITextView {
     var localZationUtil: LocalizationUtil = LocalizationUtil()
     
     @IBInspectable var localizedText: String?
-    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
+    @IBInspectable var currentLanguage: String = kLanguage.English.rawValue {
         didSet {
             localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
             setLocalizedText()

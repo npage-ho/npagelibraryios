@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NpageLibrary'
-  s.version          = '0.2.5'
+  s.version          = '0.2.6'
   s.swift_version    = '4.0'
   s.summary          = 'This library is useful for Npage company.'
 
