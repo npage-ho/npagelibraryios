@@ -132,9 +132,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
             do {
                 let jsonDic = try NPUtil.urlDecodeDictionary(JSONSerialization.jsonObject(with: anEncoding, options: [.allowFragments, .mutableContainers]) as? [String: Any])
                 print("jsonDic : \(String(describing: jsonDic))")
-                
-                successBlock!(jsonDic!)
-                
+                                
                 if let statusCode = jsonDic![successKey] as? String {
                     if statusCode == successCode {
                         successBlock!(jsonDic!)
