@@ -116,7 +116,6 @@ public class LocalizationTextView: UITextView {
     var localZationUtil: LocalizationUtil = LocalizationUtil()
     
     @IBInspectable var localizedText: String?
-    @IBInspectable var localizedPlaceholder: String?
     @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
         didSet {
             localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
@@ -133,11 +132,5 @@ public class LocalizationTextView: UITextView {
         self.text = string
         setNeedsDisplay()
         
-        if localizedPlaceholder == nil {
-            return
-        }
-        
-        let placeholder = localZationUtil.getString(key: localizedPlaceholder)
-        self.placeholder = placeholder
     }
 }
