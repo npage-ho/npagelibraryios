@@ -1,5 +1,5 @@
 //
-//  LocalizationUtil.swift
+//  NPLocalizationUtil.swift
 //  FBSnapshotTestCase
 //
 //  Created by Cheolho on 2018. 8. 13..
@@ -7,21 +7,37 @@
 
 import UIKit
 
-enum kLanguage : String {
-    case English = "eng"
-    case Korean = "kor"
+public enum kLanguage : Int {
+    case English = 0
+    case Korean = 1
+    case NorthAmerica = 2
+    case Europe = 3
+    case EastMidlands = 4
+    case China = 5
 }
 
-class LocalizationUtil: NSObject {
-    var currentLanguage: kLanguage = .English
+public class NPLocalizationUtil: NSObject {
     
+    public static let shared = NPLocalizationUtil()
+    
+    public var currentLanguage: kLanguage = .English
+
     func getString(key: String!) -> String! {
         var fileName = ""
-        // 사용자의 언어(기본 ENG)
-        if currentLanguage == .Korean {
-            fileName = "LanguageKor"
-        } else {
-            fileName = "LanguageEng"
+        // 사용자의 언어(기본 English)
+        switch currentLanguage {
+        case .Korean:
+            fileName = "LanguageKR"
+        case .NorthAmerica:
+            fileName = "LanguageNA"
+        case .Europe:
+            fileName = "LanguageEU"
+        case .EastMidlands:
+            fileName = "LanguageEM"
+        case .China:
+            fileName = "LanguageCN"
+        default:
+            fileName = "LanguageUS"
         }
         let path = Bundle.main.path(forResource: fileName, ofType: "plist")
         let dictionary = NSDictionary(contentsOfFile: path!)!
@@ -35,18 +51,26 @@ class LocalizationUtil: NSObject {
 }
 
 @IBDesignable
-public class LocalizationButton: UIButton {
-    var localZationUtil: LocalizationUtil = LocalizationUtil()
+public class NPLocalizationButton: UIButton {
+    var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
-    @IBInspectable var localizedText: String?
-    @IBInspectable var currentLanguage: String = kLanguage.English.rawValue {
+    @IBInspectable var localizedText: String? {
         didSet {
-            localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
-            setLocalizedText()
+            chageText()
+        }
+    }
+    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
+        didSet {
+            chageText()
         }
     }
     
-    private func setLocalizedText() {
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        chageText()
+    }
+    
+    private func chageText() {
         if localizedText == nil {
             return
         }
@@ -58,18 +82,26 @@ public class LocalizationButton: UIButton {
 }
 
 @IBDesignable
-public class LocalizationLabel: UILabel {
-    var localZationUtil: LocalizationUtil = LocalizationUtil()
+public class NPLocalizationLabel: UILabel {
+    var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
-    @IBInspectable var localizedText: String?
-    @IBInspectable var currentLanguage: String = kLanguage.English.rawValue {
+    @IBInspectable var localizedText: String? {
         didSet {
-            localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
-            setLocalizedText()
+            chageText()
+        }
+    }
+    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
+        didSet {
+            chageText()
         }
     }
     
-    private func setLocalizedText() {
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        chageText()
+    }
+    
+    private func chageText() {
         if localizedText == nil {
             return
         }
@@ -81,19 +113,26 @@ public class LocalizationLabel: UILabel {
 }
 
 @IBDesignable
-public class LocalizationTextField: UITextField {
-    var localZationUtil: LocalizationUtil = LocalizationUtil()
+public class NPLocalizationTextField: UITextField {
+    var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
-    @IBInspectable var localizedText: String?
-    @IBInspectable var localizedPlaceholder: String?
-    @IBInspectable var currentLanguage: String = kLanguage.English.rawValue {
+    @IBInspectable var localizedText: String? {
         didSet {
-            localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
-            setLocalizedText()
+            chageText()
+        }
+    }
+    @IBInspectable var localizedPlaceholder: String? {
+        didSet {
+            chageText()
+        }
+    }
+    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
+        didSet {
+            chageText()
         }
     }
     
-    private func setLocalizedText() {
+    private func chageText() {
         if localizedText == nil {
             return
         }
@@ -112,18 +151,26 @@ public class LocalizationTextField: UITextField {
 }
 
 @IBDesignable
-public class LocalizationTextView: UITextView {
-    var localZationUtil: LocalizationUtil = LocalizationUtil()
+public class NPLocalizationTextView: UITextView {
+    var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
-    @IBInspectable var localizedText: String?
-    @IBInspectable var currentLanguage: String = kLanguage.English.rawValue {
+    @IBInspectable var localizedText: String? {
         didSet {
-            localZationUtil.currentLanguage = kLanguage(rawValue: currentLanguage)!
-            setLocalizedText()
+            chageText()
+        }
+    }
+    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
+        didSet {
+            chageText()
         }
     }
     
-    private func setLocalizedText() {
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        chageText()
+    }
+    
+    private func chageText() {
         if localizedText == nil {
             return
         }
@@ -131,6 +178,5 @@ public class LocalizationTextView: UITextView {
         let string = localZationUtil.getString(key: localizedText)
         self.text = string
         setNeedsDisplay()
-        
     }
 }
