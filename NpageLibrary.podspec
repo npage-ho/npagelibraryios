@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NpageLibrary'
-  s.version          = '0.3.4'
+  s.version          = '0.3.6'
   s.swift_version    = '4.0'
   s.summary          = 'This library is useful for Npage company.'
 
@@ -31,14 +31,17 @@ All Thanks!
   s.source           = { :git => 'http://git.npage.co.kr:8888/ho/npagelibraryios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
+  s.platform = :ios
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'NpageLibrary/Classes/**/*'
   
-  s.resource_bundles = {
+  #s.resource_bundles = {
       #'NpageLibrary' => ['NpageLibrary/Assets/*.png']
-    'NpageLibrary' => ['NpageLibrary/Assets/*.*']
-  }
+      #  'NpageLibrary' => ['NpageLibrary/Assets/*.*']
+      #}
+  
+  s.resources = 'NpageLibrary/Assets/*.*'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

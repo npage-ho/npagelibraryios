@@ -1066,14 +1066,14 @@
 		C805248F212A5DC30084DEAD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				C8052494212A5DC30084DEAD /* NPToast.xib */,
+				C8052496212A5DC30084DEAD /* NPLoadingIndicator.xib */,
 				C8052490212A5DC30084DEAD /* NPImageZoomVC.xib */,
-				C8052491212A5DC30084DEAD /* .gitkeep */,
 				C8052492212A5DC30084DEAD /* btn_image_zoom_close@3x.png */,
 				C8052493212A5DC30084DEAD /* btn_image_zoom_close@2x.png */,
-				C8052494212A5DC30084DEAD /* NPToast.xib */,
 				C8052495212A5DC30084DEAD /* icon_image_zoom_state@3x.png */,
-				C8052496212A5DC30084DEAD /* NPLoadingIndicator.xib */,
 				C8052497212A5DC30084DEAD /* icon_image_zoom_state@2x.png */,
+				C8052491212A5DC30084DEAD /* .gitkeep */,
 			);
 			name = Assets;
 			path = NpageLibrary/Assets;
@@ -1377,8 +1377,8 @@
 			buildPhases = (
 				6D0D07EB9F6BBB7DBBF257C9CDF5E192 /* Sources */,
 				0FF7B284ABF910E02A0C60FE903A7BD0 /* Frameworks */,
-				CE150DFA8D7C97E41AD0C8A22494B549 /* Headers */,
 				C80524AA212A83670084DEAD /* Resources */,
+				CE150DFA8D7C97E41AD0C8A22494B549 /* Headers */,
 			);
 			buildRules = (
 			);
