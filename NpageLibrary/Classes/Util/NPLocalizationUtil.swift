@@ -22,7 +22,7 @@ public class NPLocalizationUtil: NSObject {
     
     public var currentLanguage: kLanguage = .English
 
-    func getString(key: String!) -> String! {
+    public func getString(key: String!) -> String! {
         var fileName = ""
         // 사용자의 언어(기본 English)
         switch currentLanguage {
@@ -108,6 +108,7 @@ public class NPLocalizationTextField: UITextField {
     }
     
     public func reloadText() {
+        reloadPlaceholder()
         if localizedText == nil {
             return
         }
@@ -115,7 +116,9 @@ public class NPLocalizationTextField: UITextField {
         let string = localZationUtil.getString(key: localizedText)
         self.text = string
         setNeedsDisplay()
-        
+    }
+    
+    private func reloadPlaceholder() {
         if localizedPlaceholder == nil {
             return
         }
