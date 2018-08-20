@@ -54,23 +54,14 @@ public class NPLocalizationUtil: NSObject {
 public class NPLocalizationButton: UIButton {
     var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
-    @IBInspectable var localizedText: String? {
-        didSet {
-            chageText()
-        }
-    }
-    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
-        didSet {
-            chageText()
-        }
-    }
+    @IBInspectable var localizedText: String?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        chageText()
+        reloadText()
     }
     
-    private func chageText() {
+    public func reloadText() {
         if localizedText == nil {
             return
         }
@@ -85,23 +76,14 @@ public class NPLocalizationButton: UIButton {
 public class NPLocalizationLabel: UILabel {
     var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
-    @IBInspectable var localizedText: String? {
-        didSet {
-            chageText()
-        }
-    }
-    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
-        didSet {
-            chageText()
-        }
-    }
+    @IBInspectable var localizedText: String?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        chageText()
+        reloadText()
     }
     
-    private func chageText() {
+    public func reloadText() {
         if localizedText == nil {
             return
         }
@@ -116,23 +98,16 @@ public class NPLocalizationLabel: UILabel {
 public class NPLocalizationTextField: UITextField {
     var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
-    @IBInspectable var localizedText: String? {
-        didSet {
-            chageText()
-        }
-    }
-    @IBInspectable var localizedPlaceholder: String? {
-        didSet {
-            chageText()
-        }
-    }
-    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
-        didSet {
-            chageText()
-        }
+    @IBInspectable var localizedText: String?
+    
+    @IBInspectable var localizedPlaceholder: String?
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        reloadText()
     }
     
-    private func chageText() {
+    public func reloadText() {
         if localizedText == nil {
             return
         }
@@ -147,6 +122,7 @@ public class NPLocalizationTextField: UITextField {
         
         let placeholder = localZationUtil.getString(key: localizedPlaceholder)
         self.placeholder = placeholder
+        setNeedsDisplay()
     }
 }
 
@@ -154,23 +130,14 @@ public class NPLocalizationTextField: UITextField {
 public class NPLocalizationTextView: UITextView {
     var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
-    @IBInspectable var localizedText: String? {
-        didSet {
-            chageText()
-        }
-    }
-    @IBInspectable var currentLanguage: Int = kLanguage.English.rawValue {
-        didSet {
-            chageText()
-        }
-    }
+    @IBInspectable var localizedText: String?
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        chageText()
+        reloadText()
     }
     
-    private func chageText() {
+    public func reloadText() {
         if localizedText == nil {
             return
         }

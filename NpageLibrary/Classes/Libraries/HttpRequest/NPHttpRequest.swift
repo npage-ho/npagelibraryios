@@ -10,17 +10,9 @@
  
  NPHttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
  
-     if let statusCode = jsonDic!["code"] as? Int {
-         if statusCode == NPEnums.CODE.SUCCESS.rawValue {
-             successBlock!(jsonDic!)
-         } else {
-             fail(code: statusCode, error: nil)
-         }
-     }
- 
-     if let download_url = jsonDic!["download_url"] as? String {
-         print("download_url: \(download_url)")
-     }
+    guard let response = jsonDic?["response"] as? [String: String] else {
+        return
+    }
  
  }, _failBlock: {code in
  
