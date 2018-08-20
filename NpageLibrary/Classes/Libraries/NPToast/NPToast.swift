@@ -5,6 +5,13 @@
 //  Created by Cheolho on 2018. 8. 20..
 //
 
+/*
+ Usage
+ 
+ NPToast.shared.show(target: self, message: "message")
+ 
+ */
+
 import UIKit
 
 let SHOW_DURATION = 2.5
@@ -31,7 +38,7 @@ public class NPToast: UIView {
     
     private var cancellation: Bool = false
     
-    public static let shared: NPToast = Bundle(for: NPToast.self).loadNibNamed(String(describing: NPToast.self), owner: nil, options: nil)![0] as! NPToast
+    public static let shared: NPToast = .fromNib()
     
     init() {
         super.init(frame: UIScreen.main.bounds)

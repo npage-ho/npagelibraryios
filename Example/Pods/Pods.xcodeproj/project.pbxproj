@@ -177,6 +177,8 @@
 		C805249C212A5DE80084DEAD /* icon_image_zoom_state@3x.png in Sources */ = {isa = PBXBuildFile; fileRef = C8052495212A5DC30084DEAD /* icon_image_zoom_state@3x.png */; };
 		C805249D212A5DE80084DEAD /* NPLoadingIndicator.xib in Sources */ = {isa = PBXBuildFile; fileRef = C8052496212A5DC30084DEAD /* NPLoadingIndicator.xib */; };
 		C805249E212A5DE80084DEAD /* icon_image_zoom_state@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = C8052497212A5DC30084DEAD /* icon_image_zoom_state@2x.png */; };
+		C80524A1212A62DB0084DEAD /* NPExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80524A0212A62DB0084DEAD /* NPExtensionView.swift */; };
+		C80524A2212A63120084DEAD /* NPExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80524A0212A62DB0084DEAD /* NPExtensionView.swift */; };
 		C8320A6164C870ADDB8A855ADEBBBDC9 /* Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C30467DEC231AEFE57A4BF8ACC718 /* Equal.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C89AFDB74F093530794264BF33F0AB32 /* Nimble-Snapshots-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F3FF730E9DFE99A6FB4433591A1F0E40 /* Nimble-Snapshots-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8CB8ABB2126AFED00DC5F2F /* NPDateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB8ABA2126AFED00DC5F2F /* NPDateUtil.swift */; };
@@ -502,6 +504,7 @@
 		C8052495212A5DC30084DEAD /* icon_image_zoom_state@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_zoom_state@3x.png"; sourceTree = "<group>"; };
 		C8052496212A5DC30084DEAD /* NPLoadingIndicator.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NPLoadingIndicator.xib; sourceTree = "<group>"; };
 		C8052497212A5DC30084DEAD /* icon_image_zoom_state@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_image_zoom_state@2x.png"; sourceTree = "<group>"; };
+		C80524A0212A62DB0084DEAD /* NPExtensionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPExtensionView.swift; sourceTree = "<group>"; };
 		C817379DB9E1F8828E907D385FA9A0DF /* BeAnInstanceOf.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeAnInstanceOf.swift; path = Sources/Nimble/Matchers/BeAnInstanceOf.swift; sourceTree = "<group>"; };
 		C8CB8ABA2126AFED00DC5F2F /* NPDateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPDateUtil.swift; sourceTree = "<group>"; };
 		C8CB8ABE212A453D00DC5F2F /* NPToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPToast.swift; sourceTree = "<group>"; };
@@ -746,6 +749,7 @@
 		42FD02B754A78B0114ABA3C8BC70B298 /* NpageLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				C805249F212A62CF0084DEAD /* Extension */,
 				C805248F212A5DC30084DEAD /* Assets */,
 				7D5D68CD9680AE035CF9987E826EBB4F /* Libraries */,
 				D68F5241DBCE5A8B61BC8343C3796244 /* Pod */,
@@ -1073,6 +1077,15 @@
 			);
 			name = Assets;
 			path = NpageLibrary/Assets;
+			sourceTree = "<group>";
+		};
+		C805249F212A62CF0084DEAD /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C80524A0212A62DB0084DEAD /* NPExtensionView.swift */,
+			);
+			name = Extension;
+			path = NpageLibrary/Classes/Extension;
 			sourceTree = "<group>";
 		};
 		C8CB8ABD212A452300DC5F2F /* NPToast */ = {
@@ -1590,6 +1603,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C80524A2212A63120084DEAD /* NPExtensionView.swift in Sources */,
 				C8052498212A5DE80084DEAD /* NPImageZoomVC.xib in Sources */,
 				C8052499212A5DE80084DEAD /* btn_image_zoom_close@3x.png in Sources */,
 				C805249A212A5DE80084DEAD /* btn_image_zoom_close@2x.png in Sources */,
@@ -1664,6 +1678,7 @@
 				DB7A106243AC974FC7EBEB00B506C786 /* FBSnapshotTestCasePlatform.m in Sources */,
 				A4F69F3477A935285620AC3031C5C848 /* FBSnapshotTestController.m in Sources */,
 				1AB7934C16CE49DE196FFC7BE7278287 /* SwiftSupport.swift in Sources */,
+				C80524A1212A62DB0084DEAD /* NPExtensionView.swift in Sources */,
 				094973D2D2F1E3B2E772F93C8147C6B9 /* UIApplication+StrictKeyWindow.m in Sources */,
 				69DA8B003216466C60F029CBD79897F1 /* UIImage+Compare.m in Sources */,
 				35DD05FD595A6FE7F5A0692D12E319DC /* UIImage+Diff.m in Sources */,

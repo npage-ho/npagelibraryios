@@ -12,7 +12,7 @@ class NPLoadingIndicator: UIView {
     
     var arrayKey = Array<String>()
     
-    static let shared: NPLoadingIndicator = Bundle(for: NPLoadingIndicator.self).loadNibNamed(String(describing: NPLoadingIndicator.self), owner: nil, options: nil)![0] as! NPLoadingIndicator
+    static let shared: NPLoadingIndicator = .fromNib()
 
     init() {
         super.init(frame: UIScreen.main.bounds)

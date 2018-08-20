@@ -8,7 +8,7 @@
 /*
  Usage
  
- HttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
+ NPHttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
  
      if let statusCode = jsonDic!["code"] as? Int {
          if statusCode == NPEnums.CODE.SUCCESS.rawValue {
