@@ -170,13 +170,6 @@
 		C32C7FE70764DE37935F6A5D80CB17C7 /* RequestModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8602CD111C76915D5FA7F616DC5338 /* RequestModifier.swift */; };
 		C365D0F41EBC7BDE6877581CB2494E03 /* XCTestObservationCenter+CurrentTestCaseTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F348FB92B506E53BD6F5848D39B8CA3 /* XCTestObservationCenter+CurrentTestCaseTracker.m */; };
 		C7375F26F0E0FE63AE03F18E16A1B995 /* NPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818795B84DF65889579CC3E6A4A44DF3 /* NPUtil.swift */; };
-		C8052498212A5DE80084DEAD /* NPImageZoomVC.xib in Sources */ = {isa = PBXBuildFile; fileRef = C8052490212A5DC30084DEAD /* NPImageZoomVC.xib */; };
-		C8052499212A5DE80084DEAD /* btn_image_zoom_close@3x.png in Sources */ = {isa = PBXBuildFile; fileRef = C8052492212A5DC30084DEAD /* btn_image_zoom_close@3x.png */; };
-		C805249A212A5DE80084DEAD /* btn_image_zoom_close@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = C8052493212A5DC30084DEAD /* btn_image_zoom_close@2x.png */; };
-		C805249B212A5DE80084DEAD /* NPToast.xib in Sources */ = {isa = PBXBuildFile; fileRef = C8052494212A5DC30084DEAD /* NPToast.xib */; };
-		C805249C212A5DE80084DEAD /* icon_image_zoom_state@3x.png in Sources */ = {isa = PBXBuildFile; fileRef = C8052495212A5DC30084DEAD /* icon_image_zoom_state@3x.png */; };
-		C805249D212A5DE80084DEAD /* NPLoadingIndicator.xib in Sources */ = {isa = PBXBuildFile; fileRef = C8052496212A5DC30084DEAD /* NPLoadingIndicator.xib */; };
-		C805249E212A5DE80084DEAD /* icon_image_zoom_state@2x.png in Sources */ = {isa = PBXBuildFile; fileRef = C8052497212A5DC30084DEAD /* icon_image_zoom_state@2x.png */; };
 		C80524A1212A62DB0084DEAD /* NPExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80524A0212A62DB0084DEAD /* NPExtensionView.swift */; };
 		C80524A2212A63120084DEAD /* NPExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80524A0212A62DB0084DEAD /* NPExtensionView.swift */; };
 		C8320A6164C870ADDB8A855ADEBBBDC9 /* Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C30467DEC231AEFE57A4BF8ACC718 /* Equal.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -1604,13 +1597,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C80524A2212A63120084DEAD /* NPExtensionView.swift in Sources */,
-				C8052498212A5DE80084DEAD /* NPImageZoomVC.xib in Sources */,
-				C8052499212A5DE80084DEAD /* btn_image_zoom_close@3x.png in Sources */,
-				C805249A212A5DE80084DEAD /* btn_image_zoom_close@2x.png in Sources */,
-				C805249B212A5DE80084DEAD /* NPToast.xib in Sources */,
-				C805249C212A5DE80084DEAD /* icon_image_zoom_state@3x.png in Sources */,
-				C805249D212A5DE80084DEAD /* NPLoadingIndicator.xib in Sources */,
-				C805249E212A5DE80084DEAD /* icon_image_zoom_state@2x.png in Sources */,
 				C8CB8AC1212A501E00DC5F2F /* NPToast.swift in Sources */,
 				C8CB8ABC212A3E9900DC5F2F /* NPDateUtil.swift in Sources */,
 				13F5CE13056F557C4602F6AA802D9291 /* NPLocalizationUtil.swift in Sources */,
@@ -1842,6 +1828,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				GCC_PREFIX_HEADER = "Target Support Files/NpageLibrary/NpageLibrary-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/NpageLibrary/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -2205,6 +2193,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				ENABLE_ON_DEMAND_RESOURCES = NO;
 				GCC_PREFIX_HEADER = "Target Support Files/NpageLibrary/NpageLibrary-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/NpageLibrary/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

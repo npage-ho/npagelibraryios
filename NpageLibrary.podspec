@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NpageLibrary'
-  s.version          = '0.3.1'
+  s.version          = '0.3.2'
   s.swift_version    = '4.0'
   s.summary          = 'This library is useful for Npage company.'
 
@@ -24,7 +24,7 @@ More features will be added.
 All Thanks!
                        DESC
 
-  s.homepage         = 'http://git.npage.co.kr:8888/ho/npagelibraryios.git'
+  s.homepage         = 'http://git.npage.co.kr:8888/ho/npagelibraryios'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'ho' => 'ho@npage.co.kr' }

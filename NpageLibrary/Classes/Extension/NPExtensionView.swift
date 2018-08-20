@@ -13,7 +13,10 @@ extension UIView {
             return resources[0] as! T
         } else if let resources = Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil) {
             return resources[0] as! T
+        } else if let resources = Bundle(identifier: "org.cocoapods.NpageLibrary")?.loadNibNamed(String(describing: T.self), owner: nil, options: nil) {
+            return resources[0] as! T
         }
+
         return NSException(name: NSExceptionName("Xib not found Exception"), reason: "Cannot find Nib", userInfo: nil) as! Error as! T
     }
 }
