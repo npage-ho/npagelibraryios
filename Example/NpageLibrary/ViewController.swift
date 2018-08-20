@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        NPToast.shared.show(target: self, message: "toast Message")
     }
 
     override func didReceiveMemoryWarning() {

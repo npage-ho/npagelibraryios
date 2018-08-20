@@ -12,7 +12,7 @@ class NPLoadingIndicator: UIView {
     
     var arrayKey = Array<String>()
     
-    static let shared: NPLoadingIndicator = .fromNib()
+    static let shared: NPLoadingIndicator = Bundle(for: NPLoadingIndicator.self).loadNibNamed(String(describing: NPLoadingIndicator.self), owner: nil, options: nil)![0] as! NPLoadingIndicator
 
     init() {
         super.init(frame: UIScreen.main.bounds)
@@ -39,6 +39,7 @@ class NPLoadingIndicator: UIView {
                 for view in (vc?.view.subviews)! {
                     if view is NPLoadingIndicator {
                         isHasIndicator = true
+                        vc?.view.bringSubview(toFront: NPLoadingIndicator.shared)
                         break
                     }
                 }
@@ -71,11 +72,5 @@ class NPLoadingIndicator: UIView {
         } else {
             self.isHidden = true
         }
-    }
-}
-
-extension UIView {
-    class func fromNib<T: UIView>() -> T {
-        return Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }
 }
