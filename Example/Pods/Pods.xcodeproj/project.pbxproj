@@ -172,6 +172,13 @@
 		C7375F26F0E0FE63AE03F18E16A1B995 /* NPUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818795B84DF65889579CC3E6A4A44DF3 /* NPUtil.swift */; };
 		C80524A1212A62DB0084DEAD /* NPExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80524A0212A62DB0084DEAD /* NPExtensionView.swift */; };
 		C80524A2212A63120084DEAD /* NPExtensionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80524A0212A62DB0084DEAD /* NPExtensionView.swift */; };
+		C80524AB212A836F0084DEAD /* NPImageZoomVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8052490212A5DC30084DEAD /* NPImageZoomVC.xib */; };
+		C80524AC212A836F0084DEAD /* btn_image_zoom_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8052492212A5DC30084DEAD /* btn_image_zoom_close@3x.png */; };
+		C80524AD212A836F0084DEAD /* btn_image_zoom_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8052493212A5DC30084DEAD /* btn_image_zoom_close@2x.png */; };
+		C80524AE212A836F0084DEAD /* NPToast.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8052494212A5DC30084DEAD /* NPToast.xib */; };
+		C80524AF212A836F0084DEAD /* icon_image_zoom_state@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8052495212A5DC30084DEAD /* icon_image_zoom_state@3x.png */; };
+		C80524B0212A836F0084DEAD /* NPLoadingIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8052496212A5DC30084DEAD /* NPLoadingIndicator.xib */; };
+		C80524B1212A836F0084DEAD /* icon_image_zoom_state@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8052497212A5DC30084DEAD /* icon_image_zoom_state@2x.png */; };
 		C8320A6164C870ADDB8A855ADEBBBDC9 /* Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06C30467DEC231AEFE57A4BF8ACC718 /* Equal.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		C89AFDB74F093530794264BF33F0AB32 /* Nimble-Snapshots-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F3FF730E9DFE99A6FB4433591A1F0E40 /* Nimble-Snapshots-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8CB8ABB2126AFED00DC5F2F /* NPDateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CB8ABA2126AFED00DC5F2F /* NPDateUtil.swift */; };
@@ -1371,6 +1378,7 @@
 				6D0D07EB9F6BBB7DBBF257C9CDF5E192 /* Sources */,
 				0FF7B284ABF910E02A0C60FE903A7BD0 /* Frameworks */,
 				CE150DFA8D7C97E41AD0C8A22494B549 /* Headers */,
+				C80524AA212A83670084DEAD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1467,6 +1475,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C80524AA212A83670084DEAD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C80524AB212A836F0084DEAD /* NPImageZoomVC.xib in Resources */,
+				C80524AC212A836F0084DEAD /* btn_image_zoom_close@3x.png in Resources */,
+				C80524AD212A836F0084DEAD /* btn_image_zoom_close@2x.png in Resources */,
+				C80524AE212A836F0084DEAD /* NPToast.xib in Resources */,
+				C80524AF212A836F0084DEAD /* icon_image_zoom_state@3x.png in Resources */,
+				C80524B0212A836F0084DEAD /* NPLoadingIndicator.xib in Resources */,
+				C80524B1212A836F0084DEAD /* icon_image_zoom_state@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		154F6D32400678B08A7CB2E5FD292972 /* Sources */ = {
