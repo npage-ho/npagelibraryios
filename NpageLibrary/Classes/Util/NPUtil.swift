@@ -9,10 +9,10 @@ import UIKit
 
 public class NPUtil: NSObject {
     public class func isNull(_ string: String?) -> Bool {
-        guard string != nil || !string!.isEmpty || string!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count != 0 else {
-            return false
+        if string == nil || string!.isEmpty || string!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count == 0 {
+            return true
         }
-        return true
+        return false
     }
     
     public class func urlDecode(_ string: String?) -> String? {
