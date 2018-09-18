@@ -10,9 +10,9 @@ import UIKit
 open class NPBaseTV: UITableView {
     var refreshBlock: ((Int) -> Void)?
     var moreBlock: ((Int) -> Void)?
-    public var didSelectBlock: ((NSInteger, [String : AnyObject]?) -> Void)?
+    public var didSelectBlock: ((NSInteger, [String : Any]?) -> Void)?
     
-    public var arrayAllData: [[String : AnyObject]]?
+    public var arrayAllData: [[String : Any]]?
     var refreshControlCustom: UIRefreshControl?
     var pageNo = 0
     var pageSize = 20
@@ -30,7 +30,7 @@ open class NPBaseTV: UITableView {
         pageNo = pageNo - 1
     }
     
-    public func didSelectItem(_didSelectBlock:@escaping (_ index: NSInteger, _ item: [String:AnyObject]?) -> Void) {
+    public func didSelectItem(_didSelectBlock:@escaping (_ index: NSInteger, _ item: [String:Any]?) -> Void) {
         didSelectBlock = _didSelectBlock
     }
     
@@ -76,7 +76,7 @@ open class NPBaseTV: UITableView {
 
 extension NPBaseTV : UITableViewDelegate {
     open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let didSelectItem = didSelectBlock as ((NSInteger, [String : AnyObject]?) -> Void)? {
+        if let didSelectItem = didSelectBlock as ((NSInteger, [String : Any]?) -> Void)? {
             didSelectItem(indexPath.row, arrayAllData?[indexPath.row])
         }
     }
