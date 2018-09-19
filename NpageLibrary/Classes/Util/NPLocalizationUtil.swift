@@ -14,10 +14,23 @@ public enum kLanguage : Int {
     case Europe = 3
     case EastMidlands = 4
     case China = 5
+    
+    public func desc() -> String {
+        switch self {
+        case .English: return "EN"
+        case .Korean: return "KR"
+        case .NorthAmerica: return "NA"
+        case .Europe: return "EU"
+        case .EastMidlands: return "EM"
+        case .China: return "CN"
+        }
+    }
+
 }
 
 public class NPLocalizationUtil: NSObject {
-    
+    public static let languages: [kLanguage] = [.English, .Korean, .China]
+
     public static let shared = NPLocalizationUtil()
     
     public var currentLanguage: kLanguage = .English

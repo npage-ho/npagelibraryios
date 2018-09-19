@@ -16,6 +16,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         NPToast.shared.show(target: self, message: "toast Message")
+        
+        for language in NPLocalizationUtil.languages {
+            print(language.description())
+        }
     }
 
     override func didReceiveMemoryWarning() {
