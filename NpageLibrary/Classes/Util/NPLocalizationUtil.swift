@@ -8,46 +8,38 @@
 import UIKit
 
 public enum kLanguage : Int {
-    case English = 0
-    case Korean = 1
-    case NorthAmerica = 2
-    case Europe = 3
-    case EastMidlands = 4
-    case China = 5
+    case EN = 0 //English
+    case KR = 1 // Korean
+    case NA = 2 // NorthAmerica
+    case EU = 3 // Europe
+    case EM = 4 // EastMidlands
+    case CN = 5 // China
     
-    public func desc() -> String {
-        switch self {
-        case .English: return "EN"
-        case .Korean: return "KR"
-        case .NorthAmerica: return "NA"
-        case .Europe: return "EU"
-        case .EastMidlands: return "EM"
-        case .China: return "CN"
-        }
+    var description: String {
+        return String(describing: self)
     }
-
 }
 
 public class NPLocalizationUtil: NSObject {
-    public static let languages: [kLanguage] = [.English, .Korean, .China]
+    public static let languages: [kLanguage] = [.EN, .KR, .CN]
 
     public static let shared = NPLocalizationUtil()
     
-    public var currentLanguage: kLanguage = .English
+    public var currentLanguage: kLanguage = .EN
 
     public func getString(key: String!) -> String! {
         var fileName = ""
         // 사용자의 언어(기본 English)
         switch currentLanguage {
-        case .Korean:
+        case .KR:
             fileName = "LanguageKR"
-        case .NorthAmerica:
+        case .NA:
             fileName = "LanguageNA"
-        case .Europe:
+        case .EU:
             fileName = "LanguageEU"
-        case .EastMidlands:
+        case .EM:
             fileName = "LanguageEM"
-        case .China:
+        case .CN:
             fileName = "LanguageCN"
         default:
             fileName = "LanguageUS"

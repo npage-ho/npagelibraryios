@@ -17,8 +17,9 @@ class ViewController: UIViewController {
         
         NPToast.shared.show(target: self, message: "toast Message")
         
+        
         for language in NPLocalizationUtil.languages {
-            print(language.description())
+            print(language)
         }
     }
 
