@@ -30,7 +30,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     var headerObject: [String: String]?
     var bodyObject: [String: String]?
     var successKey: String!
-    var successCode: String!
+    var successCode: Int!
     
     var successBlock: (([String : Any]) -> Void)?
     var failBlock: ((Int) -> Void)?
@@ -46,7 +46,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         post(_target: _target, _urlString: _urlString, _header: nil, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
     }
     
-    public func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void, _ _successKey: String = "code", _ _successCode: String = "200") {
+    public func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void, _ _successKey: String = "code", _ _successCode: Int = 200) {
         target = _target
         urlString = _urlString
         headerObject = _header
@@ -125,7 +125,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
                 let jsonDic = try NPUtil.urlDecodeDictionary(JSONSerialization.jsonObject(with: anEncoding, options: [.allowFragments, .mutableContainers]) as? [String: Any])
 //                print("jsonDic : \(String(describing: jsonDic))")
                 
-                if let statusCode = jsonDic![successKey] as? String {
+                if let statusCode = jsonDic![successKey] as? Int {
                     if statusCode == successCode {
                         successBlock!(jsonDic!)
                     } else {

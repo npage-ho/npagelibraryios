@@ -15,12 +15,23 @@ open class NPRoundButton: UIButton {
             self.layer.cornerRadius = self.cornerRadius
         }
     }
+    @IBInspectable public dynamic var highlightBgColor: UIColor?
     @IBInspectable public dynamic var lineWidth: Int = 0
     @IBInspectable public dynamic var fillColor: UIColor = UIColor.clear
+    
+    override open var isHighlighted: Bool {
+        didSet {
+            if self.highlightBgColor != nil {
+                backgroundColor = isHighlighted ? self.highlightBgColor : self.backgroundColor
+            }
+        }
+    }
     
     open override func draw(_ rect: CGRect) {
         self.layer.borderColor = fillColor.cgColor
         self.layer.borderWidth = CGFloat(lineWidth)
         self.clipsToBounds = true
     }
+    
+    
 }

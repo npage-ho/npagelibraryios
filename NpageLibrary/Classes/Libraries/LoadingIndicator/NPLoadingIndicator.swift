@@ -9,6 +9,8 @@ import UIKit
 
 class NPLoadingIndicator: UIView {
     @IBOutlet weak var viewBg: UIView!
+    @IBOutlet weak var lcLeading: NSLayoutConstraint!
+    @IBOutlet weak var lcTop: NSLayoutConstraint!
     
     var arrayKey = Array<String>()
     
@@ -28,7 +30,12 @@ class NPLoadingIndicator: UIView {
         viewBg.layer.cornerRadius = 10
         viewBg.clipsToBounds = true
         
-        viewBg.translatesAutoresizingMaskIntoConstraints = true
+        lcLeading.constant = (self.frame.size.width - 60) / 2
+        lcTop.constant = (self.frame.size.height - 60) / 2
+        
+        UIView.animate(withDuration: 0) {
+            self.layoutIfNeeded()
+        }
     }
     
     func addIndicatorView(target: UIViewController) {
