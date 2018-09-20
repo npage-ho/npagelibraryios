@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NpageLibrary'
-  s.version          = '0.4.3'
+  s.version          = '0.4.4'
   s.swift_version    = '4.0'
   s.summary          = 'This library is useful for Npage company.'
 
@@ -46,6 +46,6 @@ All Thanks!
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
-  s.dependency 'Kingfisher', '~> 4.0'
+  # s.dependency 'Kingfisher', '~> 4.0'
   
 end

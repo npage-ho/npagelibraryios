@@ -15,7 +15,6 @@
  */
 
 import UIKit
-import Kingfisher
 
 public class NPImageZoomVC: UIViewController {
     public var arrayImages: Array<String>!
@@ -48,11 +47,11 @@ public class NPImageZoomVC: UIViewController {
             labelTitle.text = arrayTitles?[page]
         }
     }
-
+    
     func addImage(_ urlString: String, index: Int) {
         let imageView = UIImageView(frame: rectStandard)
         imageView.contentMode = .scaleAspectFit
-        imageView.kf.setImage(with: URL(string: urlString))
+        imageView.downloaded(from: urlString)
         let scrollView = UIScrollView(frame: CGRect(x: CGFloat(rectStandard.size.width * CGFloat(index)), y: 0, width: rectStandard.size.width, height: rectStandard.size.height))
         scrollView.addSubview(imageView)
         scrollView.delegate = self
@@ -121,5 +120,26 @@ extension NPImageZoomVC: UIScrollViewDelegate {
         }
         labelCurrentPage.text = "\(page + 1) / \(Int(arrayImages.count))"
         setTitleText(page)
+    }
+}
+
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() {
+                self.image = image
+            }
+            }.resume()
+    }
+    func downloaded(from link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
     }
 }
