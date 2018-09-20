@@ -123,8 +123,8 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         if let anEncoding = text.data(using: .utf8) {
             do {
                 let jsonDic = try NPUtil.urlDecodeDictionary(JSONSerialization.jsonObject(with: anEncoding, options: [.allowFragments, .mutableContainers]) as? [String: Any])
-                print("jsonDic : \(String(describing: jsonDic))")
-                                
+//                print("jsonDic : \(String(describing: jsonDic))")
+                
                 if let statusCode = jsonDic![successKey] as? String {
                     if statusCode == successCode {
                         successBlock!(jsonDic!)

@@ -36,13 +36,13 @@ public class NPUtil: NSObject {
     }
     
     public class func urlDecodeArray(_ array: [Any]!) -> [Any]? {
-        var mutableArray: [AnyHashable] = []
+        var mutableArray: [Any] = []
         for i in 0..<(array?.count ?? 0) {
             if (array?[i] is [AnyHashable : Any]) {
-                mutableArray.append(NPUtil.urlDecodeDictionary(array[i] as? [String: Any]) as! AnyHashable)
+                mutableArray.append(NPUtil.urlDecodeDictionary(array[i] as? [String: Any]) as Any)
             } else if (array?[i] is [Any]) {
                 if let anI = NPUtil.urlDecodeArray(array?[i] as? [Any]) {
-                    mutableArray.append(anI as! AnyHashable)
+                    mutableArray.append(anI as Any)
                 }
             } else if (array?[i] is String) {
                 mutableArray.append(NPUtil.urlDecode(array?[i] as? String)!)
