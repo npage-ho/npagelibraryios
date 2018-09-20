@@ -30,8 +30,10 @@ class NPLoadingIndicator: UIView {
         viewBg.layer.cornerRadius = 10
         viewBg.clipsToBounds = true
         
-        lcLeading.constant = (self.frame.size.width - 60) / 2
-        lcTop.constant = (self.frame.size.height - 60) / 2
+        let screenFrame = UIScreen.main.bounds
+        
+        lcLeading.constant = (screenFrame.size.width - viewBg.frame.size.width) / 2
+        lcTop.constant = (screenFrame.size.height - viewBg.frame.size.height) / 2
         
         UIView.animate(withDuration: 0) {
             self.layoutIfNeeded()

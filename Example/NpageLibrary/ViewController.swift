@@ -21,6 +21,16 @@ class ViewController: UIViewController {
         for language in NPLocalizationUtil.languages {
             print(language)
         }
+        
+        NPHttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
+            
+            guard let response = jsonDic?["response"] as? [String: String] else {
+                return
+            }
+            
+        }, _failBlock: {code in
+            
+        })
     }
 
     override func didReceiveMemoryWarning() {
