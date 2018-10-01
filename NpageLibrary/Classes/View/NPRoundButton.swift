@@ -16,6 +16,7 @@ open class NPRoundButton: UIButton {
         }
     }
     @IBInspectable public dynamic var highlightBgColor: UIColor?
+    @IBInspectable public dynamic var selectedBgColor: UIColor?
     @IBInspectable public dynamic var lineWidth: Int = 0
     @IBInspectable public dynamic var fillColor: UIColor = UIColor.clear
     
@@ -23,6 +24,14 @@ open class NPRoundButton: UIButton {
         didSet {
             if self.highlightBgColor != nil {
                 backgroundColor = isHighlighted ? self.highlightBgColor : self.backgroundColor
+            }
+        }
+    }
+    
+    override open var isSelected: Bool {
+        didSet {
+            if self.selectedBgColor != nil {
+                backgroundColor = isSelected ? self.selectedBgColor : self.backgroundColor
             }
         }
     }
