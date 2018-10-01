@@ -56,17 +56,17 @@ public class NPLocalizationUtil: NSObject {
 }
 
 @IBDesignable
-public class NPLocalizationButton: UIButton {
+open class NPLocalizationButton: UIButton {
     var localZationUtil: NPLocalizationUtil = NPLocalizationUtil.shared
     
     @IBInspectable var localizedText: String?
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         reloadText()
     }
     
-    public func reloadText() {
+    open func reloadText() {
         if localizedText == nil {
             return
         }

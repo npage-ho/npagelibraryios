@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-open class NPRoundButton: UIButton {
+open class NPRoundButton: NPLocalizationButton {
     @IBInspectable
     public dynamic var cornerRadius: CGFloat = 0 {
         didSet {
