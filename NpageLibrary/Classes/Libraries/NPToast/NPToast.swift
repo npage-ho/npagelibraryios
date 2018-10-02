@@ -65,8 +65,11 @@ public class NPToast: UIView {
         labelMessage.text = message
         let screenFrame: CGRect = UIScreen.main.bounds
         let size: CGSize = labelMessage.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        
+        lcViewWidth.constant = CGFloat(size.width + 40)
         lcViewHeight.constant = size.height + 40
         lcViewTop.constant = (screenFrame.size.height - lcViewHeight.constant) / 2
+        lcViewLeft.constant = (screenFrame.size.width - lcViewWidth.constant) / 2
         
         let windowTypes = [target.tabBarController, target.navigationController, target]
         for vc in windowTypes {
@@ -86,7 +89,6 @@ public class NPToast: UIView {
                 }
             }
         }
-        
         
         show(withKey: message)
         let block: (() -> Void)? = {
