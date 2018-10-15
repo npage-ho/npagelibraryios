@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 //
 //        }, _failBlock: {code in
 //
-//        })
+//        }, isShowProgress: false)
     }
 
     override func didReceiveMemoryWarning() {

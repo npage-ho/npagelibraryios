@@ -43,10 +43,14 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     }
     
     public func post(_target: UIViewController!, _urlString: String, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void, _ _successKey: String = "code", _ _successCode: String = "200") {
-        post(_target: _target, _urlString: _urlString, _header: nil, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
+        post(_target: _target, _urlString: _urlString, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock, isShowProgress: true)
     }
     
-    public func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void, _ _successKey: String = "code", _ _successCode: Int = 200) {
+    public func post(_target: UIViewController!, _urlString: String, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void, _ _successKey: String = "code", _ _successCode: String = "200", isShowProgress: Bool = true) {
+        post(_target: _target, _urlString: _urlString, _header: nil, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock, isShowProgress: isShowProgress)
+    }
+    
+    public func post(_target: UIViewController!, _urlString: String, _header: [String: String]?, _bodyObject: [String: String]?, _successBlock: @escaping (_ jsonDic: [String : Any]?) -> Void, _failBlock: @escaping (_ code: (Int)?) -> Void, _ _successKey: String = "code", _ _successCode: Int = 200, isShowProgress: Bool) {
         target = _target
         urlString = _urlString
         headerObject = _header
@@ -58,9 +62,10 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         successKey = _successKey
         successCode = _successCode
         
-        NPLoadingIndicator.shared.addIndicatorView(target: target)
-        
-        NPLoadingIndicator.shared.showWithKey(key: urlString)
+        if isShowProgress {
+            NPLoadingIndicator.shared.addIndicatorView(target: target)
+            NPLoadingIndicator.shared.showWithKey(key: urlString)
+        }
         
         print("url : \(_urlString)")
         let sessionConfig = URLSessionConfiguration.default
@@ -108,6 +113,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     }
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+//        sleep(5)
         NPLoadingIndicator.shared.hideWithKey(key: urlString)
         
         if error == nil {
