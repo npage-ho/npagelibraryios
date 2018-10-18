@@ -35,3 +35,19 @@ extension String {
         return nil
     }
 }
+
+extension Data {
+    public func encrypAes256(_ key: String = AES256_SECRET_KEY) -> Data? {
+        if let encryptedData = NSData(data: self).aes256Encrypt(withKey: key) {
+            return encryptedData.base64EncodedData()
+        }
+        return nil
+    }
+    
+    public func decrypAes256(_ key:String = AES256_SECRET_KEY) -> Data? {
+        if let data = NSData(base64Encoded: self, options: []) {
+            return data.aes256Decrypt(withKey: key)
+        }
+        return nil
+    }
+}

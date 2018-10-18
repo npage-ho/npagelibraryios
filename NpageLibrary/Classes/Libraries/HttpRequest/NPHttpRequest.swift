@@ -69,7 +69,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
             NPLoadingIndicator.shared.showWithKey(key: urlString)
         }
         
-        print("url : \(_urlString)")
+        NPLog.d("url : \(_urlString)")
         let sessionConfig = URLSessionConfiguration.default
         sessionConfig.sessionSendsLaunchEvents = true
         sessionConfig.isDiscretionary = true
@@ -90,10 +90,10 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
                     array.append("\(key)=\(body[key] ?? "")")
                 }
             }
-            print("body : \(array)")
+            NPLog.d("body : \(array)")
             request?.httpBody = array.joined(separator: "&").data(using: .utf8)
             if let aBody = request?.httpBody {
-                print("body : \(String(data: aBody, encoding: .utf8) ?? "")")
+                NPLog.d("body : \(String(data: aBody, encoding: .utf8) ?? "")")
             }
         }
         let dataTask: URLSessionDataTask? = defaultSession?.dataTask(with: (request)!)
@@ -120,7 +120,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         
         if error == nil {
             let str : String = String.init(data: receiveData! as Data, encoding: String.Encoding.utf8)!
-            //            print("jsonString : \(str)")
+            //            NPLog.d("jsonString : \(str)")
             connectionDidFinish(str)
         } else {
             showFailAlert(error: error)
@@ -131,7 +131,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         if let anEncoding = text.data(using: .utf8) {
             do {
                 let jsonDic = try NPUtil.urlDecodeDictionary(JSONSerialization.jsonObject(with: anEncoding, options: [.allowFragments, .mutableContainers]) as? [String: Any])
-//                print("jsonDic : \(String(describing: jsonDic))")
+//                NPLog.d("jsonDic : \(String(describing: jsonDic))")
                 
                 if let statusCode = jsonDic![successKey] as? Int {
                     if statusCode == successCode {
