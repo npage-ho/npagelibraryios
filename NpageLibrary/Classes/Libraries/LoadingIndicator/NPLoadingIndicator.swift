@@ -59,7 +59,9 @@ public class NPLoadingIndicator: UIView {
         if key != nil {
             arrayKey.append(key!)
         }
-        self.isHidden = false
+        DispatchQueue.main.async {
+            self.isHidden = false
+        }
     }
     
     public func hide(key: String?) {
@@ -69,11 +71,15 @@ public class NPLoadingIndicator: UIView {
                     arrayKey.remove(at: index)
                 }
                 if arrayKey.count == 0 {
-                    self.isHidden = true
+                    DispatchQueue.main.async {
+                        self.isHidden = true
+                    }
                 }
             }
         } else {
-            self.isHidden = true
+            DispatchQueue.main.async {
+                self.isHidden = true
+            }
         }
     }
 }
