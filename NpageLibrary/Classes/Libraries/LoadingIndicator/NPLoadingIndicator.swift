@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NPLoadingIndicator: UIView {
+public class NPLoadingIndicator: UIView {
     @IBOutlet weak var viewBg: UIView!
     @IBOutlet weak var lcLeading: NSLayoutConstraint!
     @IBOutlet weak var lcTop: NSLayoutConstraint!
@@ -20,11 +20,11 @@ class NPLoadingIndicator: UIView {
         super.init(frame: UIScreen.main.bounds)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         viewBg.layer.cornerRadius = 10
