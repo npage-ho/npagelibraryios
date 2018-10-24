@@ -52,7 +52,9 @@ open class NPBaseTV: UITableView {
     }
     
     override open func reloadData() {
-        super.reloadData()
+        DispatchQueue.main.async {
+            super.reloadData()
+        }
         if refreshControlCustom != nil && ((refreshControlCustom?.isRefreshing)! || !(refreshControlCustom?.isHidden ?? false)) {
             refreshControlCustom?.isHidden = true
             refreshControlCustom?.endRefreshing()

@@ -52,7 +52,7 @@ public class NPToastView: UIView {
     
     public func show(target: UIViewController!, message: String!) {
         labelMessage.text = message
-        let screenFrame: CGRect = UIScreen.main.bounds
+        let screenFrame: CGRect = target.view.bounds
         let size: CGSize = labelMessage.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         
         lcViewWidth.constant = CGFloat(size.width + 40)
