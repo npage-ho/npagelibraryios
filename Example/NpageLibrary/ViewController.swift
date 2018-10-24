@@ -15,12 +15,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        NPToast.shared.show(target: self, message: "toast Message")
-        
-        
-        for language in NPLocalizationUtil.languages {
-            NPToast.shared.show(target: self, message: "this is test\nmessage")
-        }
+//        NPToast.shared.show(target: self, message: "toast Message")
+//        
+//        
+//        for language in NPLocalizationUtil.languages {
+//            NPToast.shared.show(target: self, message: "this is test\nmessage")
+//        }
         
 //        NPHttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
 //
@@ -31,6 +31,11 @@ class ViewController: UIViewController {
 //        }, _failBlock: {code in
 //
 //        }, isShowProgress: false)
+    }
+    
+    @IBAction func onClickButton(_ sender: Any) {
+        NPToast.shared.show(target: self, message: "onClickButton")
+
     }
 
     override func didReceiveMemoryWarning() {

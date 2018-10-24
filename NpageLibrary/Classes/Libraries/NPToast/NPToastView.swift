@@ -27,12 +27,9 @@ public class NPToastView: UIView {
     @IBOutlet var lcViewWidth: NSLayoutConstraint!
     @IBOutlet var lcViewHeight: NSLayoutConstraint!
     @IBOutlet var labelMessage: UILabel!
-    var mutableArray: [AnyHashable] = []
     
     private var cancellation: Bool = false
-    
-    public static let shared: NPToastView = .fromNib()
-    
+        
     init() {
         super.init(frame: UIScreen.main.bounds)
     }
@@ -43,7 +40,6 @@ public class NPToastView: UIView {
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        mutableArray = [AnyHashable](repeating: 0, count: 0)
         viewGrayBg.layer.cornerRadius = 10
         viewGrayBg.clipsToBounds = true
         
@@ -63,37 +59,24 @@ public class NPToastView: UIView {
         lcViewHeight.constant = size.height + 40
         lcViewTop.constant = (screenFrame.size.height - lcViewHeight.constant) / 2
         lcViewLeft.constant = (screenFrame.size.width - lcViewWidth.constant) / 2
-                
-        show(withKey: message)
+        
         let block: (() -> Void)? = {
-            self.hide(withKey: message)
+            self.hide()
         }
         cancellation = false
         dispatch_with_cancellation(block: block, cancellation: cancellation)
     }
     
-    func show(withKey key: String?) {
-        if let aKey = key {
-            mutableArray.append(aKey)
-        }
-        self.isHidden = false
-    }
-    
-    func hide(withKey key: String?) {
-        if let aKey = key {
-            if mutableArray.contains(aKey) {
-                while let elementIndex = mutableArray.index(of: aKey) { mutableArray.remove(at: elementIndex) }
-                if mutableArray.count == 0 {
-                    self.isHidden = true
-                }
-            }
-        } else {
-            self.isHidden = true
-        }
-    }
-    
     @IBAction func closeBtnPressed(_ sender: UIButton) {
         cancellation = true
-        hide(withKey: labelMessage.text)
+        self.hide()
+    }
+    
+    func hide() {
+        UIView.animate(withDuration: 0.15, animations: {
+            self.alpha = 0
+        }) { (completion) in
+            self.removeFromSuperview()
+        }
     }
 }

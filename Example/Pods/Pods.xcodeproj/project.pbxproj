@@ -153,8 +153,8 @@
 		C365D0F41EBC7BDE6877581CB2494E03 /* XCTestObservationCenter+CurrentTestCaseTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FBCE7282A34B68225BB329B0118DB2 /* XCTestObservationCenter+CurrentTestCaseTracker.m */; };
 		C373960F31BC576EF84BB8D09805C7CF /* NSString+MD5_SHA1.h in Headers */ = {isa = PBXBuildFile; fileRef = E003144EFCF7B4C2F5D150D513956846 /* NSString+MD5_SHA1.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C80B72FD218033CF00AC45B9 /* NPToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B72FC218033CF00AC45B9 /* NPToastView.swift */; };
-		C80B72FE2180374C00AC45B9 /* NPToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B72FC218033CF00AC45B9 /* NPToastView.swift */; };
 		C8320A6164C870ADDB8A855ADEBBBDC9 /* Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8698DB0F11FC587C0881A15B87B25 /* Equal.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		C889F3B021803E8900B8D637 /* NPToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B72FC218033CF00AC45B9 /* NPToastView.swift */; };
 		C89AFDB74F093530794264BF33F0AB32 /* Nimble-Snapshots-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0610E7B35C11D51CE9CFF63BEBF4E0CA /* Nimble-Snapshots-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C907DC9A1F3C78CD7F5DBDB699289C0F /* Nimble-Snapshots-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFBAF22E15C973ED8D2968C738E484A /* Nimble-Snapshots-dummy.m */; };
 		CA733C45BDA7FC300ADD50F2BD79DF5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F444F5EA2EB93D7C5B122BB1CE27F42 /* Foundation.framework */; };
@@ -1464,7 +1464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C80B72FE2180374C00AC45B9 /* NPToastView.swift in Sources */,
+				C889F3B021803E8900B8D637 /* NPToastView.swift in Sources */,
 				6B20CB22428FBE851D848526F9181FEA /* NpageLibrary-dummy.m in Sources */,
 				DBD49B1A998A9D0A9C64AD17E5B16232 /* NPAlertUtil.swift in Sources */,
 				D518DE4C4F45B3497109B584B23A24FD /* NPBaseCV.swift in Sources */,

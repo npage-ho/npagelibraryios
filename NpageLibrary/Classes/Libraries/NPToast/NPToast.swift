@@ -22,14 +22,15 @@ public class NPToast: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.view.isUserInteractionEnabled = false
     }
     
     public func show(target: UIViewController!, message: String!) {
-        let toastView: NPToastView = NPToastView()
+        let toastView: NPToastView = NPToastView.fromNib()
         mutableArray.append(toastView)
         
         toastView.show(target: self, message: message)
+        self.view.addSubview(toastView)
         
         let topViewController = topViewControllerWithRootViewController(rootViewController: target)
         
