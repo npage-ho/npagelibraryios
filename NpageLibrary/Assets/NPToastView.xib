@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NPToast" customModule="NpageLibrary" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NPToastView" customModule="NpageLibrary" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -57,7 +57,7 @@
                 <outlet property="lcViewLeft" destination="dia-Eh-mjC" id="Yal-lq-pIS"/>
                 <outlet property="lcViewTop" destination="fpy-hL-L0m" id="7fk-TM-n7K"/>
                 <outlet property="lcViewWidth" destination="Dbv-yi-kOY" id="5u4-qw-uhR"/>
-                <outlet property="viewGrayBg" destination="krd-DM-8bI" id="MSw-p8-Y1a"/>
+                <outlet property="viewGrayBg" destination="krd-DM-8bI" id="One-hT-2qT"/>
             </connections>
             <point key="canvasLocation" x="25.5" y="52.5"/>
         </view>

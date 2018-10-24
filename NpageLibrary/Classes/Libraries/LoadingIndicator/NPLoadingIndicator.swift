@@ -14,7 +14,7 @@ public class NPLoadingIndicator: UIView {
     
     var arrayKey = Array<String>()
     
-    static let shared: NPLoadingIndicator = .fromNib()
+    public static let shared: NPLoadingIndicator = .fromNib()
 
     init() {
         super.init(frame: UIScreen.main.bounds)
@@ -40,7 +40,7 @@ public class NPLoadingIndicator: UIView {
         }
     }
     
-    func addIndicatorView(target: UIViewController) {
+    public func addIndicatorView(target: UIViewController) {
         let windowTypes = [target.tabBarController, target.navigationController, target]
         for vc in windowTypes {
             if vc != nil {
@@ -61,14 +61,14 @@ public class NPLoadingIndicator: UIView {
         }
     }
     
-    func showWithKey(key: String?) {
+    public func showWithKey(key: String?) {
         if key != nil {
             arrayKey.append(key!)
         }
         self.isHidden = false
     }
     
-    func hideWithKey(key: String?) {
+    public func hideWithKey(key: String?) {
         if key != nil {
             if arrayKey.contains(key!) {
                 if let index = arrayKey.index(of: key!) {
