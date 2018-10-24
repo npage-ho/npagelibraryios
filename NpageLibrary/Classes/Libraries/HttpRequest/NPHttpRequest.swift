@@ -65,8 +65,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         isShowErrorCode = _isShowErrorCode
         
         if _isShowProgress {
-            NPLoadingIndicator.shared.addIndicatorView(target: target)
-            NPLoadingIndicator.shared.showWithKey(key: urlString)
+            NPLoadingIndicator.shared.show(target: target, key: urlString)
         }
         
         NPLog.d("url : \(_urlString)")
@@ -116,7 +115,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     
     public func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
 //        sleep(5)
-        NPLoadingIndicator.shared.hideWithKey(key: urlString)
+        NPLoadingIndicator.shared.hide(key: urlString)
         
         if error == nil {
             let str : String = String.init(data: receiveData! as Data, encoding: String.Encoding.utf8)!

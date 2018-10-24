@@ -40,35 +40,29 @@ public class NPLoadingIndicator: UIView {
         }
     }
     
-    public func addIndicatorView(target: UIViewController) {
-        let windowTypes = [target.tabBarController, target.navigationController, target]
-        for vc in windowTypes {
-            if vc != nil {
-                var isHasIndicator = false
-                for view in (vc?.view.subviews)! {
-                    if view is NPLoadingIndicator {
-                        isHasIndicator = true
-                        vc?.view.bringSubview(toFront: NPLoadingIndicator.shared)
-                        break
-                    }
-                }
-                
-                if isHasIndicator == false {
-                    vc?.view.addSubview(NPLoadingIndicator.shared)
-                    break
-                }
+    public func show(target: UIViewController, key: String?) {
+        let topViewController = NPUtil.topViewControllerWithRootViewController(rootViewController: target)
+        
+        var isHasIndicator = false
+        for view in (topViewController?.view.subviews)! {
+            if view is NPLoadingIndicator {
+                isHasIndicator = true
+                topViewController?.view.bringSubview(toFront: NPLoadingIndicator.shared)
+                break
             }
         }
-    }
-    
-    public func showWithKey(key: String?) {
+        
+        if isHasIndicator == false {
+            topViewController?.view.addSubview(NPLoadingIndicator.shared)
+        }
+        
         if key != nil {
             arrayKey.append(key!)
         }
         self.isHidden = false
     }
     
-    public func hideWithKey(key: String?) {
+    public func hide(key: String?) {
         if key != nil {
             if arrayKey.contains(key!) {
                 if let index = arrayKey.index(of: key!) {

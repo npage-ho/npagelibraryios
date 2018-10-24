@@ -60,17 +60,15 @@ public class NPUtil: NSObject {
         return ""
     }
     
-    public class func fromNib<T: UIView>() -> T {
-        if let resources = Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil), resources.count > 0 {
-            return resources[0] as! T
-        } else if let resources = Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil), resources.count > 0 {
-            return resources[0] as! T
-        } else if let resources = Bundle(identifier: "org.cocoapods.NpageLibrary")?.loadNibNamed(String(describing: T.self), owner: nil, options: nil), resources.count > 0 {
-            return resources[0] as! T
-        } else if let resources = Bundle(url: (Bundle(for: T.self).resourceURL?.appendingPathComponent("NpageLibrary.bundle"))!)?.loadNibNamed(String(describing: T.self), owner: nil, options: nil), resources.count > 0 {
-            return resources[0] as! T
+    public class func topViewControllerWithRootViewController(rootViewController: UIViewController!) -> UIViewController? {
+        if (rootViewController == nil) { return nil }
+        if (rootViewController.isKind(of: UITabBarController.self)) {
+            return topViewControllerWithRootViewController(rootViewController: (rootViewController as! UITabBarController).selectedViewController)
+        } else if (rootViewController.isKind(of: UINavigationController.self)) {
+            return topViewControllerWithRootViewController(rootViewController: (rootViewController as! UINavigationController).visibleViewController)
+        } else if (rootViewController.presentedViewController != nil) {
+            return topViewControllerWithRootViewController(rootViewController: rootViewController.presentedViewController)
         }
-        
-        return NSException(name: NSExceptionName("Xib not found Exception"), reason: "Cannot find Nib", userInfo: nil) as! Error as! T
+        return rootViewController
     }
 }
