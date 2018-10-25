@@ -9,11 +9,11 @@ import UIKit
 
 public enum kLanguage : Int {
     case EN = 0 //English
-    case KR = 1 // Korean
-    case NA = 2 // NorthAmerica
-    case EU = 3 // Europe
-    case EM = 4 // EastMidlands
-    case CN = 5 // China
+    case FR = 1 // French
+    case KO = 2 // Korean
+    case PO = 3 // Protuges
+    case ZH = 4 // Chinese
+    case ES = 5 // 스페인어
     
     var description: String {
         return String(describing: self)
@@ -21,7 +21,7 @@ public enum kLanguage : Int {
 }
 
 public class NPLocalizationUtil: NSObject {
-    public static let languages: [kLanguage] = [.EN, .KR, .CN]
+    public static let languages: [kLanguage] = [.EN, .FR, .KO, .PO, .ZH, .ES]
 
     public static let shared = NPLocalizationUtil()
     
@@ -31,18 +31,20 @@ public class NPLocalizationUtil: NSObject {
         var fileName = ""
         // 사용자의 언어(기본 English)
         switch currentLanguage {
-        case .KR:
-            fileName = "LanguageKR"
-        case .NA:
-            fileName = "LanguageNA"
-        case .EU:
-            fileName = "LanguageEU"
-        case .EM:
-            fileName = "LanguageEM"
-        case .CN:
-            fileName = "LanguageCN"
+        case .EN:
+            fileName = "LanguageEN"
+        case .FR:
+            fileName = "LanguageFR"
+        case .KO:
+            fileName = "LanguageKO"
+        case .PO:
+            fileName = "LanguagePO"
+        case .ZH:
+            fileName = "LanguageZH"
+        case .ES:
+            fileName = "LanguageES"
         default:
-            fileName = "LanguageUS"
+            fileName = "LanguageEN"
         }
         let path = Bundle.main.path(forResource: fileName, ofType: "plist")
         let dictionary = NSDictionary(contentsOfFile: path!)!
