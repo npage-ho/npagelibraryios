@@ -27,28 +27,32 @@ public class NPLocalizationUtil: NSObject {
     
     public var currentLanguage: kLanguage = .EN
 
-    public func getString(key: String!) -> String! {
-        var fileName = ""
+    public func getString(key: String?) -> String! {
+        var fileName = "LanguageEN"
         // 사용자의 언어(기본 English)
         switch currentLanguage {
         case .EN:
             fileName = "LanguageEN"
+            break
         case .FR:
             fileName = "LanguageFR"
+            break
         case .KO:
             fileName = "LanguageKO"
+            break
         case .PO:
             fileName = "LanguagePO"
+            break
         case .ZH:
             fileName = "LanguageZH"
+            break
         case .ES:
             fileName = "LanguageES"
-        default:
-            fileName = "LanguageEN"
+            break
         }
         let path = Bundle.main.path(forResource: fileName, ofType: "plist")
         let dictionary = NSDictionary(contentsOfFile: path!)!
-        let value = dictionary[key] as? String
+        let value = dictionary[key ?? ""] as? String
         if value != nil && (value?.count ?? 0) > 0 {
             return value
         } else {
@@ -69,13 +73,11 @@ open class NPLocalizationButton: UIButton {
     }
     
     open func reloadText() {
-        if localizedText == nil {
-            return
+        if let text = localizedText {
+            let string = localZationUtil.getString(key: text)
+            self.setTitle(string, for: .normal)
+            setNeedsDisplay()
         }
-        
-        let string = localZationUtil.getString(key: localizedText)
-        self.setTitle(string, for: .normal)
-        setNeedsDisplay()
     }
 }
 
@@ -91,13 +93,11 @@ public class NPLocalizationLabel: UILabel {
     }
     
     public func reloadText() {
-        if localizedText == nil {
-            return
+        if let text = localizedText {
+            let string = localZationUtil.getString(key: text)
+            self.text = string
+            setNeedsDisplay()
         }
-        
-        let string = localZationUtil.getString(key: localizedText)
-        self.text = string
-        setNeedsDisplay()
     }
 }
 
@@ -116,23 +116,20 @@ public class NPLocalizationTextField: UITextField {
     
     public func reloadText() {
         reloadPlaceholder()
-        if localizedText == nil {
-            return
+        if let text = localizedText {
+            let string = localZationUtil.getString(key: text)
+            self.text = string
+            setNeedsDisplay()
         }
-        
-        let string = localZationUtil.getString(key: localizedText)
-        self.text = string
-        setNeedsDisplay()
     }
     
     private func reloadPlaceholder() {
-        if localizedPlaceholder == nil {
-            return
+        if let text = localizedPlaceholder {
+            let placeholder = localZationUtil.getString(key: text)
+            self.placeholder = placeholder
+            setNeedsDisplay()
         }
         
-        let placeholder = localZationUtil.getString(key: localizedPlaceholder)
-        self.placeholder = placeholder
-        setNeedsDisplay()
     }
 }
 
@@ -148,12 +145,10 @@ public class NPLocalizationTextView: UITextView {
     }
     
     public func reloadText() {
-        if localizedText == nil {
-            return
+        if let text = localizedText {
+            let string = localZationUtil.getString(key: text)
+            self.text = string
+            setNeedsDisplay()
         }
-        
-        let string = localZationUtil.getString(key: localizedText)
-        self.text = string
-        setNeedsDisplay()
     }
 }

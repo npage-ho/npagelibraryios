@@ -15,6 +15,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+//        NPLocalizationUtil.shared.currentLanguage = kLanguage(rawValue: 0)!
+
 //        NPToast.shared.show(target: self, message: "toast Message")
 //        
 //        
