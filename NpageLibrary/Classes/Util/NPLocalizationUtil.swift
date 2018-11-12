@@ -53,14 +53,12 @@ public class NPLocalizationUtil: NSObject {
         let path = Bundle.main.path(forResource: fileName, ofType: "plist")
         let dictionary = NSDictionary(contentsOfFile: path!)!
         let value = dictionary[key ?? ""] as? String
-        if value != nil && (value?.count ?? 0) > 0 {
+        if !NPUtil.isNull(value) {
             return value
+        } else if NPUtil.isNull(value) && curLang != .EN {
+            return getString(key: key, curLang: .EN)
         } else {
-            if NPUtil.isNull(value) && curLang != .EN {
-                return getString(key: key, curLang: .EN)
-            } else {
-                return key
-            }
+            return key
         }
     }
 }
