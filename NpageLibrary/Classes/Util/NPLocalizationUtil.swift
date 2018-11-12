@@ -56,7 +56,7 @@ public class NPLocalizationUtil: NSObject {
         if value != nil && (value?.count ?? 0) > 0 {
             return value
         } else {
-            if curLang != .EN {
+            if NPUtil.isNull(value) && curLang != .EN {
                 return getString(key: key, curLang: .EN)
             } else {
                 return key
