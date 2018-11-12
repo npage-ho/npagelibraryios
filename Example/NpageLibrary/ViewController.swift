@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        NPLocalizationUtil.shared.currentLanguage = .ES
+        NPLocalizationUtil.shared.currentLanguage = .EN
 
         NPToast.shared.show(target: self, message: NPLocalizationUtil.shared.getString(key: "APP_NAME"))
 //        

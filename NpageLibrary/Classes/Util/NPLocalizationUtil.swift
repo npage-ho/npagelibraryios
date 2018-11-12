@@ -28,40 +28,7 @@ public class NPLocalizationUtil: NSObject {
     public var currentLanguage: kLanguage = .EN
     
     public func getStr(key: String?) -> String! {
-        var fileName = "LanguageEN"
-        // 사용자의 언어(기본 English)
-        switch currentLanguage {
-        case .EN:
-            fileName = "LanguageEN"
-            break
-        case .FR:
-            fileName = "LanguageFR"
-            break
-        case .KO:
-            fileName = "LanguageKO"
-            break
-        case .PO:
-            fileName = "LanguagePO"
-            break
-        case .ZH:
-            fileName = "LanguageZH"
-            break
-        case .ES:
-            fileName = "LanguageES"
-            break
-        }
-        
-        if let path = Bundle.main.path(forResource: fileName, ofType: "plist") {
-            let dictionary = NSDictionary(contentsOfFile: path)!
-            let value = dictionary[key ?? ""] as? String
-            if !NPUtil.isNull(value) {
-                return value
-            } else {
-                return key
-            }
-        } else {
-            return key
-        }
+        return getStr(key: key, curLang: currentLanguage)
     }
     
     public func getStr(key: String?, curLang: kLanguage) -> String! {
@@ -87,11 +54,14 @@ public class NPLocalizationUtil: NSObject {
             fileName = "LanguageES"
             break
         }
-        let path = Bundle.main.path(forResource: fileName, ofType: "plist")
-        let dictionary = NSDictionary(contentsOfFile: path!)!
-        let value = dictionary[key ?? ""] as? String
-        if !NPUtil.isNull(value) {
-            return value
+        if let path = Bundle.main.path(forResource: fileName, ofType: "plist") {
+            let dictionary = NSDictionary(contentsOfFile: path)!
+            let value = dictionary[key ?? ""] as? String
+            if !NPUtil.isNull(value) {
+                return value
+            } else {
+                return key
+            }
         } else {
             return key
         }
@@ -99,10 +69,10 @@ public class NPLocalizationUtil: NSObject {
 
     public func getString(key: String?) -> String! {
         let value = getStr(key: key)
-        if NPUtil.isNull(value) {
-            return value
-        } else if NPUtil.isNull(value) && currentLanguage != .EN {
-            return getStr(key: key)
+        if value == key && currentLanguage != .EN {
+            return getStr(key: key, curLang: .EN)
+        } else if !NPUtil.isNull(value) {
+                return value
         } else {
             return value
         }
