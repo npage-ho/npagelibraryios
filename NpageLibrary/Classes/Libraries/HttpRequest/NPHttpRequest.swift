@@ -33,8 +33,8 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     var successCode: Int!
     var isShowErrorCode: Bool = true
 
-    var successBlock: (([String : Any]) -> Void)?
-    var failBlock: ((Int) -> Void)?
+    var successBlock: ((_ jsonDic: [String : Any]?) -> Void)?
+    var failBlock: ((_ code: (Int)?) -> Void)?
     
     var receiveData : NSMutableData?
     var defaultSession : URLSession?
@@ -151,8 +151,12 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         print("error : \(String(describing: error ?? nil))")
         var actions: [UIAlertAction]! = []
         actions.append(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        actions.append(UIAlertAction(title: "OK", style: .default, handler: { [weak self] (action) in
-            self?.post(_target: self?.target, _urlString: (self?.urlString)!, _bodyObject: self?.bodyObject, _successBlock: self?.successBlock as! ([AnyHashable : Any]?) -> Void, _failBlock: self?.failBlock as! ((Int)?) -> Void)
+        actions.append(UIAlertAction(title: "OK", style: .default, handler: { action in
+            if let _target = self.target, let _urlString = self.urlString, let _bodyObject = self.bodyObject, let _successBlock = self.successBlock, let _failBlock = self.failBlock {
+                self.post(_target: _target, _urlString: _urlString, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
+            } else {
+                NPLog.e("parameter wrong")
+            }
         }))
         
         if isShowErrorCode {

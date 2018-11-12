@@ -33,34 +33,15 @@ extension UIAlertController {
     }
     
     static func showAlert(title: String?, message: String?, actions: [UIAlertAction]) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            for action in actions {
-                alert.addAction(action)
-            }
-            
-            if let topViewController = UIApplication.topViewController() {
-                topViewController.present(alert, animated: true, completion: nil)
-            } else {
-                NPLog.i("NPAlertUtil cannot find Top ViewController")
-            }
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        for action in actions {
+            alert.addAction(action)
         }
-    }
-}
-
-extension UIApplication {
-    class func topViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
-        if let navigationController = controller as? UINavigationController {
-            return topViewController(controller: navigationController.visibleViewController)
+        
+        if let topViewController = NPUtil.topViewControllerWithRootViewController(rootViewController: UIApplication.shared.keyWindow?.rootViewController) {
+            topViewController.present(alert, animated: true, completion: nil)
+        } else {
+            NPLog.i("NPAlertUtil cannot find Top ViewController")
         }
-        if let tabController = controller as? UITabBarController {
-            if let selected = tabController.selectedViewController {
-                return topViewController(controller: selected)
-            }
-        }
-        if let presented = controller?.presentedViewController {
-            return topViewController(controller: presented)
-        }
-        return controller
     }
 }

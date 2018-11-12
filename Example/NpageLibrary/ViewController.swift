@@ -24,15 +24,15 @@ class ViewController: UIViewController {
 //            NPToast.shared.show(target: self, message: "this is test\nmessage")
 //        }
         
-//        NPHttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
-//
-//            guard let response = jsonDic?["response"] as? [String: String] else {
-//                return
-//            }
-//
-//        }, _failBlock: {code in
-//
-//        }, isShowProgress: false)
+        NPHttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
+
+            guard let response = jsonDic?["response"] as? [String: String] else {
+                return
+            }
+
+        }, _failBlock: {code in
+
+        })
     }
     
     @IBAction func onClickButton(_ sender: Any) {
