@@ -27,10 +27,10 @@ public class NPLocalizationUtil: NSObject {
     
     public var currentLanguage: kLanguage = .EN
 
-    public func getString(key: String?) -> String! {
+    public func getString(key: String?, curLang: kLanguage = .EN) -> String! {
         var fileName = "LanguageEN"
         // 사용자의 언어(기본 English)
-        switch currentLanguage {
+        switch curLang {
         case .EN:
             fileName = "LanguageEN"
             break
@@ -56,7 +56,11 @@ public class NPLocalizationUtil: NSObject {
         if value != nil && (value?.count ?? 0) > 0 {
             return value
         } else {
-            return key
+            if curLang != .EN {
+                return getString(key: key, curLang: .EN)
+            } else {
+                return key
+            }
         }
     }
 }
