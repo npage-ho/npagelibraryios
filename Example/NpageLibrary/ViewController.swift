@@ -15,15 +15,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        NPLocalizationUtil.shared.currentLanguage = kLanguage(rawValue: 0)!
+        NPLocalizationUtil.shared.currentLanguage = .ES
 
-//        NPToast.shared.show(target: self, message: "toast Message")
+        NPToast.shared.show(target: self, message: NPLocalizationUtil.shared.getString(key: "APP_NAME"))
 //        
 //        
 //        for language in NPLocalizationUtil.languages {
 //            NPToast.shared.show(target: self, message: "this is test\nmessage")
 //        }
         
+        /*
         NPHttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
 
             guard let response = jsonDic?["response"] as? [String: String] else {
@@ -33,6 +34,7 @@ class ViewController: UIViewController {
         }, _failBlock: {code in
 
         })
+ */
     }
     
     @IBAction func onClickButton(_ sender: Any) {

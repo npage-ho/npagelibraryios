@@ -14,8 +14,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		C87D398621211306002F01B2 /* LanguageKR.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87D398521211306002F01B2 /* LanguageKR.plist */; };
-		C87D398821211314002F01B2 /* LanguageUS.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87D398721211314002F01B2 /* LanguageUS.plist */; };
+		C87D398621211306002F01B2 /* LanguageKO.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87D398521211306002F01B2 /* LanguageKO.plist */; };
+		C87D398821211314002F01B2 /* LanguageEN.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87D398721211314002F01B2 /* LanguageEN.plist */; };
 		FE8446B22855E54F0B92BEA3 /* Pods_NpageLibrary_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200944F440928E137A8EF306 /* Pods_NpageLibrary_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +46,8 @@
 		85AF6D5A1B934C0604FC5DCC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		97E3BFFB74226B5C248510F7 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B5192FF20EB823FF4B30A975 /* Pods-NpageLibrary_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NpageLibrary_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-NpageLibrary_Example/Pods-NpageLibrary_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C87D398521211306002F01B2 /* LanguageKR.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LanguageKR.plist; sourceTree = "<group>"; };
-		C87D398721211314002F01B2 /* LanguageUS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LanguageUS.plist; sourceTree = "<group>"; };
+		C87D398521211306002F01B2 /* LanguageKO.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LanguageKO.plist; sourceTree = "<group>"; };
+		C87D398721211314002F01B2 /* LanguageEN.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LanguageEN.plist; sourceTree = "<group>"; };
 		E5B89C5FA792961276019C79 /* Pods-NpageLibrary_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NpageLibrary_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NpageLibrary_Tests/Pods-NpageLibrary_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		EFCA960567AE5CD14980AFAA /* Pods-NpageLibrary_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NpageLibrary_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NpageLibrary_Example/Pods-NpageLibrary_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F08F68D223CC5DBD0730E637 /* Pods_NpageLibrary_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NpageLibrary_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,8 +123,8 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
-				C87D398521211306002F01B2 /* LanguageKR.plist */,
-				C87D398721211314002F01B2 /* LanguageUS.plist */,
+				C87D398521211306002F01B2 /* LanguageKO.plist */,
+				C87D398721211314002F01B2 /* LanguageEN.plist */,
 			);
 			name = "Example for NpageLibrary";
 			path = NpageLibrary;
@@ -254,10 +254,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				C87D398821211314002F01B2 /* LanguageUS.plist in Resources */,
+				C87D398821211314002F01B2 /* LanguageEN.plist in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				C87D398621211306002F01B2 /* LanguageKR.plist in Resources */,
+				C87D398621211306002F01B2 /* LanguageKO.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
