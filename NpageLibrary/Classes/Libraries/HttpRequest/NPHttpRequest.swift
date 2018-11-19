@@ -99,6 +99,14 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         dataTask?.resume()
     }
     
+    private func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        if let serverTrust = challenge.protectionSpace.serverTrust {
+            completionHandler(URLSession.AuthChallengeDisposition.useCredential, URLCredential(trust: serverTrust))
+        } else {
+            completionHandler(URLSession.AuthChallengeDisposition.cancelAuthenticationChallenge, nil)
+        }
+    }
+    
     public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
         receiveData?.append(data)
     }
