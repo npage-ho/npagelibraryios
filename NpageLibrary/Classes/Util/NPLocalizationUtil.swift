@@ -8,12 +8,14 @@
 import UIKit
 
 public enum kLanguage : Int {
-    case EN = 0 //English
+    case EN = 0 // English
     case FR = 1 // French
     case KO = 2 // Korean
     case PO = 3 // Protuges
     case ZH = 4 // Chinese
     case ES = 5 // 스페인어
+    case RU = 6 // Russia
+    case AE = 7 // UNITEDARABEMIRATES
     
     var description: String {
         return String(describing: self)
@@ -21,7 +23,7 @@ public enum kLanguage : Int {
 }
 
 public class NPLocalizationUtil: NSObject {
-    public static let languages: [kLanguage] = [.EN, .FR, .KO, .PO, .ZH, .ES]
+    public static let languages: [kLanguage] = [.EN, .FR, .KO, .PO, .ZH, .ES, .RU, .AE]
 
     public static let shared = NPLocalizationUtil()
     
@@ -52,6 +54,12 @@ public class NPLocalizationUtil: NSObject {
             break
         case .ES:
             fileName = "LanguageES"
+            break
+        case .RU:
+            fileName = "LanguageRU"
+            break
+        case .AE:
+            fileName = "LanguageAE"
             break
         }
         if let path = Bundle.main.path(forResource: fileName, ofType: "plist") {
