@@ -4,18 +4,17 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - Nimble (7.0.3)
+  - Nimble (7.3.1)
   - Nimble-Snapshots (6.3.0):
     - Nimble-Snapshots/Core (= 6.3.0)
   - Nimble-Snapshots/Core (6.3.0):
     - FBSnapshotTestCase (~> 2.0)
     - Nimble (~> 7.0)
-  - NpageLibrary (0.4.3)
+  - NpageLibrary (0.6.9)
   - Quick (1.2.0)
 
 DEPENDENCIES:
   - FBSnapshotTestCase (~> 2.1.4)
-  - Nimble (~> 7.0.2)
   - Nimble-Snapshots (~> 6.3.0)
   - NpageLibrary (from `../`)
   - Quick (~> 1.2.0)
@@ -33,11 +32,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Nimble: 04f732da099ea4d153122aec8c2a88fd0c7219ae
   Nimble-Snapshots: f5459b5b091678dc942d03ec4741cacb58ba4a52
-  NpageLibrary: b43ad5a5e60ebcbb3723d0261293f98c3ec1b589
+  NpageLibrary: 42fc9adcc600814215d3cc35476b5d94a1667050
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
-PODFILE CHECKSUM: 163cc12da7adbb974087e48b76341128b0ddf3eb
+PODFILE CHECKSUM: 3bced5eddc575ceab65ffe44caa55b447f5f46d8
 
 COCOAPODS: 1.5.3

@@ -50,13 +50,24 @@ public class NPToastView: UIView {
         lcViewLeft.constant = (screenFrame.size.width - lcViewWidth.constant) / 2
     }
     
-    public func show(target: UIViewController!, message: String!) {
+    public func show(target: UIViewController, message: String) {
         labelMessage.text = message
         let screenFrame: CGRect = target.view.bounds
         let size: CGSize = labelMessage.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
         
-        lcViewWidth.constant = CGFloat(size.width + 40)
-        lcViewHeight.constant = size.height + 40
+        var width = CGFloat(size.width)
+        if width > screenFrame.size.width - 40 {
+            width = screenFrame.size.width - 40
+        } else if width <= 150 {
+            width = 150
+        }
+        labelMessage.frame.size.width = width - 80
+        lcViewWidth.constant = width
+        
+        let labelRect = labelMessage.text?.boundingRect(with: CGSize(width: labelMessage.frame.size.width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: labelMessage.font], context: nil)
+        if let height = labelRect?.height {
+            lcViewHeight.constant = height + 40
+        }
         lcViewTop.constant = (screenFrame.size.height - lcViewHeight.constant) / 2
         lcViewLeft.constant = (screenFrame.size.width - lcViewWidth.constant) / 2
         

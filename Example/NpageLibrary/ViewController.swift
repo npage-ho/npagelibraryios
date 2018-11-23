@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         
         NPLocalizationUtil.shared.currentLanguage = .EN
 
-        NPToast.shared.show(target: self, message: NPLocalizationUtil.shared.getString(key: "APP_NAME"))
+        NPToast.shared.show(target: self, message: "this is long long string test!! this is long long string test!! this is long long string test!! ENDthis is long long string test!! this is long long string test!! this is long long string test!! END")
 //        
 //        
 //        for language in NPLocalizationUtil.languages {
