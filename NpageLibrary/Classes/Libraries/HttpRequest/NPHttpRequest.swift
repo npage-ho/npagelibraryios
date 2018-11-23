@@ -156,9 +156,15 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     
     func showFailAlert(error: Error?) {
         let errorMessage: String = (error?.localizedDescription)!
-        print("error : \(String(describing: error ?? nil))")
+        print("showFailAlert : \(String(describing: error ?? nil))")
         var actions: [UIAlertAction]! = []
-        actions.append(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actions.append(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            if error != nil {
+                self.failBlock!((error! as NSError).code)
+            } else {
+                self.failBlock!(500)
+            }
+        }))
         actions.append(UIAlertAction(title: "OK", style: .default, handler: { action in
             if let _target = self.target, let _urlString = self.urlString, let _bodyObject = self.bodyObject, let _successBlock = self.successBlock, let _failBlock = self.failBlock {
                 self.post(_target: _target, _urlString: _urlString, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
@@ -178,15 +184,24 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         }
     }
     
-    func showFailAlert(code: Int!) {
-        if code == 500 {
-            if isShowErrorCode {
-                NPAlertUtil.showAlert(title: "Network Error", message: "A server error has occurred. Please contact the manager\nCode : \(String(code!))")
+    func showFailAlert(code: Int) {
+        print("showFailAlert : \(String(describing: code))")
+        var actions: [UIAlertAction]! = []
+        actions.append(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            self.failBlock!(code)
+        }))
+        actions.append(UIAlertAction(title: "OK", style: .default, handler: { action in
+            if let _target = self.target, let _urlString = self.urlString, let _bodyObject = self.bodyObject, let _successBlock = self.successBlock, let _failBlock = self.failBlock {
+                self.post(_target: _target, _urlString: _urlString, _bodyObject: _bodyObject, _successBlock: _successBlock, _failBlock: _failBlock)
             } else {
-                failBlock!(code!)
+                NPLog.e("parameter wrong")
             }
+        }))
+        
+        if isShowErrorCode {
+            NPAlertUtil.showAlert(title: "Network Error", message: "A server error occurred.\nCode : \(String(describing: code))\nDo you want to retry?", actions: actions)
         } else {
-            failBlock!(code!)
+            failBlock!(code)
         }
     }
 }
