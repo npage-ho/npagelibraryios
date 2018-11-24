@@ -22,7 +22,7 @@
 
 import UIKit
 
-let TIME_OUT_INTERVAL: Double = 30
+let TIME_OUT_INTERVAL: Double = 60
 
 public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     var target: UIViewController!
@@ -174,7 +174,11 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         }))
         
         if isShowErrorCode {
-            NPAlertUtil.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
+            if failBlock == nil {
+                NPAlertUtil.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
+            } else {
+                NPLog.e("errorMessage : \(errorMessage)")
+            }
         } else {
             if error != nil {
                 failBlock!((error! as NSError).code)
@@ -199,7 +203,11 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         }))
         
         if isShowErrorCode {
-            NPAlertUtil.showAlert(title: "Network Error", message: "A server error occurred.\nCode : \(String(describing: code))\nDo you want to retry?", actions: actions)
+            if failBlock == nil {
+                NPAlertUtil.showAlert(title: "Network Error", message: "A server error occurred.\nCode : \(String(describing: code))\nDo you want to retry?", actions: actions)
+            } else {
+                NPLog.e("code : \(code)")
+            }
         } else {
             failBlock!(code)
         }

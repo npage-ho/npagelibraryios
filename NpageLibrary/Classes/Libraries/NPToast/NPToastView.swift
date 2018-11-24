@@ -58,8 +58,8 @@ public class NPToastView: UIView {
         var width = CGFloat(size.width)
         if width > screenFrame.size.width - 40 {
             width = screenFrame.size.width - 40
-        } else if width <= 150 {
-            width = 150
+        } else if width <= UIScreen.main.bounds.size.width / 2 {
+            width = UIScreen.main.bounds.size.width / 2
         }
         labelMessage.frame.size.width = width - 80
         lcViewWidth.constant = width
