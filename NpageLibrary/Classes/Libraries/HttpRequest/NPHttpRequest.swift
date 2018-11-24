@@ -174,11 +174,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         }))
         
         if isShowErrorCode {
-            if failBlock == nil {
-                NPAlertUtil.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
-            } else {
-                NPLog.e("errorMessage : \(errorMessage)")
-            }
+            NPAlertUtil.showAlert(title: "Network Error", message: "A network error occurred.\nError : \(errorMessage)\nDo you want to retry?", actions: actions)
         } else {
             if error != nil {
                 failBlock!((error! as NSError).code)
@@ -203,11 +199,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
         }))
         
         if isShowErrorCode {
-            if failBlock == nil {
-                NPAlertUtil.showAlert(title: "Network Error", message: "A server error occurred.\nCode : \(String(describing: code))\nDo you want to retry?", actions: actions)
-            } else {
-                NPLog.e("code : \(code)")
-            }
+            NPAlertUtil.showAlert(title: "Network Error", message: "A server error occurred.\nCode : \(String(describing: code))\nDo you want to retry?", actions: actions)
         } else {
             failBlock!(code)
         }
