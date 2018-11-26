@@ -11,7 +11,7 @@ public enum kLanguage : Int {
     case EN = 0 // English
     case FR = 1 // French
     case KO = 2 // Korean
-    case PO = 3 // Protuges
+    case PT = 3 // Protuges
     case ZH = 4 // Chinese
     case ES = 5 // 스페인어
     case RU = 6 // Russia
@@ -23,7 +23,7 @@ public enum kLanguage : Int {
 }
 
 public class NPLocalizationUtil: NSObject {
-    public static let languages: [kLanguage] = [.EN, .FR, .KO, .PO, .ZH, .ES, .RU, .AE]
+    public static let languages: [kLanguage] = [.EN, .FR, .KO, .PT, .ZH, .ES, .RU, .AE]
 
     public static let shared = NPLocalizationUtil()
     
@@ -46,8 +46,8 @@ public class NPLocalizationUtil: NSObject {
         case .KO:
             fileName = "LanguageKO"
             break
-        case .PO:
-            fileName = "LanguagePO"
+        case .PT:
+            fileName = "LanguagePT"
             break
         case .ZH:
             fileName = "LanguageZH"
