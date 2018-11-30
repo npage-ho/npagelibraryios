@@ -24,17 +24,24 @@ class ViewController: UIViewController {
 //            NPToast.shared.show(target: self, message: "this is test\nmessage")
 //        }
         
-        /*
-        NPHttpRequest().post(_target: self, _urlString: "http://api.omnicommerce.co.kr:8045/api/checkVersion", _bodyObject: ["":""], _successBlock: { jsonDic in
 
-            guard let response = jsonDic?["response"] as? [String: String] else {
+        NPHttpRequest().post(_target: self, _urlString: "http://192.168.0.15:8090/partsbk/mobileApi/50", _bodyObject: ["":""], _successBlock: { jsonDic in
+            guard let response = jsonDic?["data"] as? [String: Any] else {
                 return
+            }
+            
+            if let boardList = response["boardList"] as? [[String: Any]] {
+                for dictionary in boardList {
+                    if let title = dictionary["title"] as? String, title.contains("박정원") {
+                        print("boardLog : \(dictionary)")
+                    }
+                }
             }
 
         }, _failBlock: {code in
 
         })
- */
+
     }
     
     @IBAction func onClickButton(_ sender: Any) {

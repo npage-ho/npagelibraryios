@@ -137,7 +137,7 @@ public class NPHttpRequest: NSObject, URLSessionDataDelegate {
     func connectionDidFinish(_ text : String) {
         if let anEncoding = text.data(using: .utf8) {
             do {
-                let jsonDic = try NPUtil.urlDecode(dictionary: JSONSerialization.jsonObject(with: anEncoding, options: [.allowFragments, .mutableContainers]) as? [String: Any])
+                let jsonDic = try NPUtil.urlDecode(dictionary: JSONSerialization.jsonObject(with: anEncoding, options: [.allowFragments, .mutableContainers, .mutableLeaves]) as! [String : Any])
 //                NPLog.d("jsonDic : \(String(describing: jsonDic))")
                 
                 if let statusCode = jsonDic![successKey] as? Int {

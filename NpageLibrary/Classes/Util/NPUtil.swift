@@ -16,7 +16,11 @@ public class NPUtil: NSObject {
     }
     
     public class func urlDecode(string: String?) -> String? {
-        return string?.removingPercentEncoding?.replacingOccurrences(of: "+", with: " ")
+        if let resString = string?.removingPercentEncoding?.replacingOccurrences(of: "+", with: " ") {
+            return resString
+        } else {
+            return string
+        }
     }
     
     public class func urlDecode(dictionary: [String: Any]!) -> [String : Any]? {
