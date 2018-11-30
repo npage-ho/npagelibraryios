@@ -20,19 +20,19 @@ public class NPUtil: NSObject {
     }
     
     public class func urlDecode(dictionary: [String: Any]!) -> [String : Any]? {
-        var dictionary: [String : Any] = [:]
+        var mutableDictionary: [String : Any] = [:]
         for key: String in dictionary.keys {
             if let value = dictionary[key] as? [String: Any] {
-                dictionary[key] = NPUtil.urlDecode(dictionary: value)
+                mutableDictionary[key] = NPUtil.urlDecode(dictionary: value)
             } else if let value = dictionary[key] as? [Any] {
-                dictionary[key] = NPUtil.urlDecode(array: value)
+                mutableDictionary[key] = NPUtil.urlDecode(array: value)
             } else if let value = dictionary[key] as? String {
-                dictionary[key] = NPUtil.urlDecode(string: value)
+                mutableDictionary[key] = NPUtil.urlDecode(string: value)
             } else {
-                dictionary[key] = dictionary[key]
+                mutableDictionary[key] = dictionary[key]
             }
         }
-        return dictionary
+        return mutableDictionary
     }
     
     public class func urlDecode(array: [Any]) -> [Any]? {
