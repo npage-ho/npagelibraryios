@@ -15,49 +15,40 @@ public class NPUtil: NSObject {
         return false
     }
     
-    public class func urlDecode(_ string: String?) -> String? {
+    public class func urlDecode(string: String?) -> String? {
         return string?.removingPercentEncoding?.replacingOccurrences(of: "+", with: " ")
     }
     
-    public class func urlDecodeDictionary(_ jsonDic: [String: Any]!) -> [String : Any]? {
+    public class func urlDecode(dictionary: [String: Any]!) -> [String : Any]? {
         var dictionary: [String : Any] = [:]
-        for key: String in jsonDic.keys {
-            if ((jsonDic[key] as? [String: Any]) != nil) {
-                dictionary[key] = NPUtil.urlDecodeDictionary(jsonDic?[key] as? [String : Any])
-            } else if ((jsonDic[key] as? [Any]) != nil) {
-                dictionary[key] = NPUtil.urlDecodeArray(jsonDic?[key] as? [Any])
-            } else if ((jsonDic[key] as? String) != nil) {
-                dictionary[key] = NPUtil.urlDecode(jsonDic?[key] as? String)
+        for key: String in dictionary.keys {
+            if let value = dictionary[key] as? [String: Any] {
+                dictionary[key] = NPUtil.urlDecode(dictionary: value)
+            } else if let value = dictionary[key] as? [Any] {
+                dictionary[key] = NPUtil.urlDecode(array: value)
+            } else if let value = dictionary[key] as? String {
+                dictionary[key] = NPUtil.urlDecode(string: value)
             } else {
-                dictionary[key] = jsonDic?[key]
+                dictionary[key] = dictionary[key]
             }
         }
         return dictionary
     }
     
-    public class func urlDecodeArray(_ array: [Any]!) -> [Any]? {
+    public class func urlDecode(array: [Any]) -> [Any]? {
         var mutableArray: [Any] = []
-        for i in 0..<(array?.count ?? 0) {
-            if (array?[i] is [AnyHashable : Any]) {
-                mutableArray.append(NPUtil.urlDecodeDictionary(array[i] as? [String: Any]) as Any)
-            } else if (array?[i] is [Any]) {
-                if let anI = NPUtil.urlDecodeArray(array?[i] as? [Any]) {
-                    mutableArray.append(anI as Any)
-                }
-            } else if (array?[i] is String) {
-                mutableArray.append(NPUtil.urlDecode(array?[i] as? String)!)
+        for i in 0..<array.count {
+            if let value = array[i] as? [String: Any] {
+                mutableArray.append(NPUtil.urlDecode(dictionary: value) as Any)
+            } else if let value = array[i] as? [Any] {
+                mutableArray.append(NPUtil.urlDecode(array: value) as Any)
+            } else if let value = array[i] as? String {
+                mutableArray.append(NPUtil.urlDecode(string: value) as Any)
             } else {
-                mutableArray.append(array?[i] as! AnyHashable)
+                mutableArray.append(array[i])
             }
         }
         return mutableArray
-    }
-    
-    public class func getStringFromDic(dic:[String:String], key:String!) -> String! {
-        if dic[key] != nil {
-            return dic[key]
-        }
-        return ""
     }
     
     public class func topViewControllerWithRootViewController(rootViewController: UIViewController!) -> UIViewController? {
