@@ -16,6 +16,9 @@ public enum kLanguage : Int {
     case ES = 5 // 스페인어
     case RU = 6 // Russia
     case AE = 7 // UNITEDARABEMIRATES
+    case DE = 8 // 독일어
+    case NL = 9 // 네덜란드어
+    case IT = 10 // 이태리어
     
     var description: String {
         return String(describing: self)
@@ -60,6 +63,15 @@ public class NPLocalizationUtil: NSObject {
             break
         case .AE:
             fileName = "LanguageAE"
+            break
+        case .DE:
+            fileName = "LanguageDE"
+            break
+        case .NL:
+            fileName = "LanguageNL"
+            break
+        case .IT:
+            fileName = "LanguageIT"
             break
         }
         if let path = Bundle.main.path(forResource: fileName, ofType: "plist") {
