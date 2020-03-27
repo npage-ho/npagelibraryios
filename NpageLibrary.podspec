@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NpageLibrary'
-  s.version          = '0.7.8'
+  s.version          = '0.7.9'
   s.swift_version    = '4.0'
   s.summary          = 'This library is useful for Npage company.'
 
@@ -32,7 +32,7 @@ All Thanks!
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform = :ios
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.4'
 
   s.source_files = 'NpageLibrary/Classes/**/*'
   
