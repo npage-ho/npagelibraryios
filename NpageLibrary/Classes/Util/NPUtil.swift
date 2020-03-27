@@ -23,7 +23,7 @@ public class NPUtil: NSObject {
         }
     }
     
-    public class func urlDecode(dictionary: [String: Any]!) -> [String : Any]? {
+    public class func urlDecode(dictionary: [String: Any]) -> [String : Any]? {
         var mutableDictionary: [String : Any] = [:]
         for key: String in dictionary.keys {
             if let value = dictionary[key] as? [String: Any] {
